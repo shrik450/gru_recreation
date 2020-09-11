@@ -19,7 +19,7 @@ class CreateComments < ActiveRecord::Migration[6.0]
       t.boolean :no_follow
       t.boolean :removed
       t.timestamp :created_utc
-      t.string :t.timestamps
+      t.timestamps
     end
   end
 end
