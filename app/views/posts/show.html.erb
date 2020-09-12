@@ -12,7 +12,7 @@
   <div class="row">
     <div class="col comments-base">
       <h3>Comments</h3>
-      <%# Load three levels of comments, which should be enough to save a lot of queries. %>
+      <%# Load four levels of comments, which should be enough to save a lot of queries. %>
       <% @post.comments.preload(comments: {comments: :comments}).each do |comment| %>
         <%= render partial: "comment_base", locals: {comment: comment} %>
       <% end %>
