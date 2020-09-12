@@ -1,4 +1,3 @@
-# typed: strict
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_11_044634) do
+ActiveRecord::Schema.define(version: 2020_09_12_110928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +35,7 @@ ActiveRecord::Schema.define(version: 2020_09_11_044634) do
     t.datetime "created_utc"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "parent_type", null: false
     t.index ["author"], name: "index_comments_on_author"
     t.index ["parent_id"], name: "index_comments_on_parent_id"
     t.index ["score"], name: "index_comments_on_score"
