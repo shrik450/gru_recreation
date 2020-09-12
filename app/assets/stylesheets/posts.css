@@ -2,3 +2,38 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+
+.post {
+  border: 1.5px solid #e6e6e6;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.image-row {
+  max-width: 80%;
+  margin: auto;
+  padding: 5px;
+}
+
+img {
+  border: 1px solid #e6e6e6;
+  max-width: 100%;
+}
+
+.comment {
+  padding: 5px;
+  background-color: #fff;
+  border-radius: 3px;
+  border: 1px solid #e6e6e6;
+}
+
+.comment-alt {
+  padding: 5px;
+  background-color: #f7f7f8;
+  border: 1px solid #e6e6e6;
+}
+
+.children {
+  margin-left: 20px;
+  padding: 2px;
+}
