@@ -1,0 +1,13 @@
+<div class="comment-alt">
+  <div><%= comment.score %> points | <%= comment.author %></div>
+  <div class="content">
+    <p><%= comment.body %></p>
+  </div>
+  <% if comment.comments.exists? %>
+    <div class="children">
+      <% comment.comments.each do |child| %>
+        <%= render partial: "comment_base", locals: {comment: child} %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

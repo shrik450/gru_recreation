@@ -190,7 +190,7 @@ DEPENDENCIES
   sorbet
   sorbet-rails
   sorbet-runtime
-  tzinfo-data
+  sprockets-rails
   web-console (>= 3.3.0)
 
 RUBY VERSION
