@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   #   get :rate, on: :member
   # end
 
+  # SECTION Authorisation
+  get "login", to: "sessions#new", as: "login"
+  # !SECION
+
+  # SECTION Posts
   get "posts/:id", to: "posts#show"
   get "posts/rate/:id", to: "posts#rate"
+  # !SECTION
 end

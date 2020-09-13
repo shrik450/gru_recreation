@@ -143,6 +143,15 @@ module Comment::GeneratedAttributeMethods
   sig { returns(T::Boolean) }
   def parent_id?; end
 
+  sig { returns(String) }
+  def parent_type; end
+
+  sig { params(value: T.any(String, Symbol)).void }
+  def parent_type=(value); end
+
+  sig { returns(T::Boolean) }
+  def parent_type?; end
+
   sig { returns(T.nilable(String)) }
   def removal_reason; end
 
