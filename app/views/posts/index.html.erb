@@ -1,0 +1,53 @@
+<div class="container">
+  <h1>Posts</h1>
+  <div style="margin-bottom: 10px; padding: 10px;">
+    <%= search_form_for @q, class: "col-md-12" do |f| %>
+      <div class="row justify-content-center">
+        <div class="col-md-5">
+          <div class="form-group row">
+            <%= f.label :title_cont %>
+            <%= f.search_field :title_cont, class: "form-control" %>
+          </div>
+          <div class="form-group row">
+            <%= f.label :author_cont %>
+            <%= f.search_field :author_cont, class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+          <div class="form-group row">
+            <%= f.label :created_utc_lteq %>
+            <%= f.search_field :created_utc_lteq, class: "form-control" %>
+          </div>
+          <div class="form-group row">
+            <%= f.label :created_utc_gteq %>
+            <%= f.search_field :created_utc_gteq, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <%= paginate @posts %>
+  </div>
+  <div class="row">
+    <div class="col">
+      <ul class="list-group">
+        <% @posts.each do |post| %>
+          <li class="list-group-item">
+            <div>
+              <p>
+                <%= post.score %> |
+                <a href="<%= posts_show_path post.id %>"><%= post.title %></a>
+              </p>
+              <p>At <%= post.created_utc %> by <%= post.author %></p>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

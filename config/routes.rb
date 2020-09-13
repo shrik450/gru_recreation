@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   # !SECTION
 
   # SECTION Posts
-  get "posts/:id", to: "posts#show"
-  get "posts/rate/:id", to: "posts#rate"
+  get "posts/", to: "posts#index", as: "posts"
+  get "posts/:id", to: "posts#show", as: "posts_show"
+  get "posts/rate/:id", to: "posts#rate", as: "posts_rate"
   # !SECTION
 end

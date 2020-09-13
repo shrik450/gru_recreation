@@ -18,4 +18,9 @@ class ApplicationController < ActionController::Base
     user_id = session[:user_id]
     User.find_by(id: user_id)
   end
+
+  sig {void}
+  def render_forbidden
+    render plain: "Forbidden", status: :unauthorized
+  end
 end
