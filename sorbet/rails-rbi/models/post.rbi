@@ -163,6 +163,15 @@ module Post::GeneratedAttributeMethods
 end
 
 module Post::GeneratedAssociationMethods
+  sig { returns(::Code::ActiveRecord_Associations_CollectionProxy) }
+  def codes; end
+
+  sig { returns(T::Array[Integer]) }
+  def code_ids; end
+
+  sig { params(value: T::Enumerable[::Code]).void }
+  def codes=(value); end
+
   sig { returns(::Comment::ActiveRecord_Associations_CollectionProxy) }
   def comments; end
 
@@ -171,6 +180,15 @@ module Post::GeneratedAssociationMethods
 
   sig { params(value: T::Enumerable[::Comment]).void }
   def comments=(value); end
+
+  sig { returns(::Rating::ActiveRecord_Associations_CollectionProxy) }
+  def ratings; end
+
+  sig { returns(T::Array[Integer]) }
+  def rating_ids; end
+
+  sig { params(value: T::Enumerable[::Rating]).void }
+  def ratings=(value); end
 end
 
 module Post::CustomFinderMethods

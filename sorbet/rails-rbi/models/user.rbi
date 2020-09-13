@@ -54,6 +54,26 @@ module User::GeneratedAttributeMethods
   def updated_at?; end
 end
 
+module User::GeneratedAssociationMethods
+  sig { returns(::Code::ActiveRecord_Associations_CollectionProxy) }
+  def codes; end
+
+  sig { returns(T::Array[Integer]) }
+  def code_ids; end
+
+  sig { params(value: T::Enumerable[::Code]).void }
+  def codes=(value); end
+
+  sig { returns(::Rating::ActiveRecord_Associations_CollectionProxy) }
+  def ratings; end
+
+  sig { returns(T::Array[Integer]) }
+  def rating_ids; end
+
+  sig { params(value: T::Enumerable[::Rating]).void }
+  def ratings=(value); end
+end
+
 module User::CustomFinderMethods
   sig { params(limit: Integer).returns(T::Array[User]) }
   def first_n(limit); end
@@ -73,6 +93,7 @@ end
 
 class User < ApplicationRecord
   include User::GeneratedAttributeMethods
+  include User::GeneratedAssociationMethods
   extend User::CustomFinderMethods
   extend User::QueryMethodsReturningRelation
   RelationType = T.type_alias { T.any(User::ActiveRecord_Relation, User::ActiveRecord_Associations_CollectionProxy, User::ActiveRecord_AssociationRelation) }

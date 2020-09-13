@@ -2,6 +2,26 @@
 # Please rerun bundle exec rake rails_rbi:models[Rating] to regenerate.
 
 # typed: strong
+module Rating::EnumInstanceMethods
+  sig { returns(T::Boolean) }
+  def not_hateful?; end
+
+  sig { void }
+  def not_hateful!; end
+
+  sig { returns(T::Boolean) }
+  def ambiguous?; end
+
+  sig { void }
+  def ambiguous!; end
+
+  sig { returns(T::Boolean) }
+  def hateful?; end
+
+  sig { void }
+  def hateful!; end
+end
+
 module Rating::ActiveRelation_WhereNot
   sig { params(opts: T.untyped, rest: T.untyped).returns(T.self_type) }
   def not(opts, *rest); end
@@ -35,10 +55,10 @@ module Rating::GeneratedAttributeMethods
   sig { returns(T::Boolean) }
   def post_id?; end
 
-  sig { returns(Integer) }
+  sig { returns(String) }
   def rating; end
 
-  sig { params(value: T.any(Numeric, ActiveSupport::Duration)).void }
+  sig { params(value: T.any(Integer, String, Symbol)).void }
   def rating=(value); end
 
   sig { returns(T::Boolean) }
@@ -61,6 +81,15 @@ module Rating::GeneratedAttributeMethods
 
   sig { returns(T::Boolean) }
   def user_id?; end
+end
+
+class Rating::RatingEnum < T::Enum
+  enums do
+    NotHateful = new(%q{not_hateful})
+    Ambiguous = new(%q{ambiguous})
+    Hateful = new(%q{hateful})
+  end
+
 end
 
 module Rating::GeneratedAssociationMethods
@@ -113,11 +142,113 @@ module Rating::CustomFinderMethods
 end
 
 class Rating < ApplicationRecord
+  include Rating::EnumInstanceMethods
   include Rating::GeneratedAttributeMethods
   include Rating::GeneratedAssociationMethods
   extend Rating::CustomFinderMethods
   extend Rating::QueryMethodsReturningRelation
   RelationType = T.type_alias { T.any(Rating::ActiveRecord_Relation, Rating::ActiveRecord_Associations_CollectionProxy, Rating::ActiveRecord_AssociationRelation) }
+
+  sig { returns(T::Hash[T.any(String, Symbol), Integer]) }
+  def self.ratings; end
+
+  sig { params(args: T.untyped).returns(Rating::ActiveRecord_Relation) }
+  def self.ambiguous(*args); end
+
+  sig { params(args: T.untyped).returns(Rating::ActiveRecord_Relation) }
+  def self.hateful(*args); end
+
+  sig { params(args: T.untyped).returns(Rating::ActiveRecord_Relation) }
+  def self.not_ambiguous(*args); end
+
+  sig { params(args: T.untyped).returns(Rating::ActiveRecord_Relation) }
+  def self.not_hateful(*args); end
+
+  sig { params(args: T.untyped).returns(Rating::ActiveRecord_Relation) }
+  def self.not_not_hateful(*args); end
+
+  sig { returns(Rating::RatingEnum) }
+  def typed_rating; end
+
+  sig { params(value: Rating::RatingEnum).void }
+  def typed_rating=(value); end
+end
+
+class Rating::ActiveRecord_Relation < ActiveRecord::Relation
+  include Rating::ActiveRelation_WhereNot
+  include Rating::CustomFinderMethods
+  include Rating::QueryMethodsReturningRelation
+  Elem = type_member(fixed: Rating)
+
+  sig { params(args: T.untyped).returns(Rating::ActiveRecord_Relation) }
+  def ambiguous(*args); end
+
+  sig { params(args: T.untyped).returns(Rating::ActiveRecord_Relation) }
+  def hateful(*args); end
+
+  sig { params(args: T.untyped).returns(Rating::ActiveRecord_Relation) }
+  def not_ambiguous(*args); end
+
+  sig { params(args: T.untyped).returns(Rating::ActiveRecord_Relation) }
+  def not_hateful(*args); end
+
+  sig { params(args: T.untyped).returns(Rating::ActiveRecord_Relation) }
+  def not_not_hateful(*args); end
+end
+
+class Rating::ActiveRecord_AssociationRelation < ActiveRecord::AssociationRelation
+  include Rating::ActiveRelation_WhereNot
+  include Rating::CustomFinderMethods
+  include Rating::QueryMethodsReturningAssociationRelation
+  Elem = type_member(fixed: Rating)
+
+  sig { params(args: T.untyped).returns(Rating::ActiveRecord_AssociationRelation) }
+  def ambiguous(*args); end
+
+  sig { params(args: T.untyped).returns(Rating::ActiveRecord_AssociationRelation) }
+  def hateful(*args); end
+
+  sig { params(args: T.untyped).returns(Rating::ActiveRecord_AssociationRelation) }
+  def not_ambiguous(*args); end
+
+  sig { params(args: T.untyped).returns(Rating::ActiveRecord_AssociationRelation) }
+  def not_hateful(*args); end
+
+  sig { params(args: T.untyped).returns(Rating::ActiveRecord_AssociationRelation) }
+  def not_not_hateful(*args); end
+end
+
+class Rating::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+  include Rating::CustomFinderMethods
+  include Rating::QueryMethodsReturningAssociationRelation
+  Elem = type_member(fixed: Rating)
+
+  sig { params(args: T.untyped).returns(Rating::ActiveRecord_AssociationRelation) }
+  def ambiguous(*args); end
+
+  sig { params(args: T.untyped).returns(Rating::ActiveRecord_AssociationRelation) }
+  def hateful(*args); end
+
+  sig { params(args: T.untyped).returns(Rating::ActiveRecord_AssociationRelation) }
+  def not_ambiguous(*args); end
+
+  sig { params(args: T.untyped).returns(Rating::ActiveRecord_AssociationRelation) }
+  def not_hateful(*args); end
+
+  sig { params(args: T.untyped).returns(Rating::ActiveRecord_AssociationRelation) }
+  def not_not_hateful(*args); end
+
+  sig { params(records: T.any(Rating, T::Array[Rating])).returns(T.self_type) }
+  def <<(*records); end
+
+  sig { params(records: T.any(Rating, T::Array[Rating])).returns(T.self_type) }
+  def append(*records); end
+
+  sig { params(records: T.any(Rating, T::Array[Rating])).returns(T.self_type) }
+  def push(*records); end
+
+  sig { params(records: T.any(Rating, T::Array[Rating])).returns(T.self_type) }
+  def concat(*records); end
 end
 
 module Rating::QueryMethodsReturningRelation
@@ -344,36 +475,4 @@ module Rating::QueryMethodsReturningAssociationRelation
     ).returns(ActiveRecord::Batches::BatchEnumerator)
   end
   def in_batches(of: 1000, start: nil, finish: nil, load: false, error_on_ignore: nil, &block); end
-end
-
-class Rating::ActiveRecord_Relation < ActiveRecord::Relation
-  include Rating::ActiveRelation_WhereNot
-  include Rating::CustomFinderMethods
-  include Rating::QueryMethodsReturningRelation
-  Elem = type_member(fixed: Rating)
-end
-
-class Rating::ActiveRecord_AssociationRelation < ActiveRecord::AssociationRelation
-  include Rating::ActiveRelation_WhereNot
-  include Rating::CustomFinderMethods
-  include Rating::QueryMethodsReturningAssociationRelation
-  Elem = type_member(fixed: Rating)
-end
-
-class Rating::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
-  include Rating::CustomFinderMethods
-  include Rating::QueryMethodsReturningAssociationRelation
-  Elem = type_member(fixed: Rating)
-
-  sig { params(records: T.any(Rating, T::Array[Rating])).returns(T.self_type) }
-  def <<(*records); end
-
-  sig { params(records: T.any(Rating, T::Array[Rating])).returns(T.self_type) }
-  def append(*records); end
-
-  sig { params(records: T.any(Rating, T::Array[Rating])).returns(T.self_type) }
-  def push(*records); end
-
-  sig { params(records: T.any(Rating, T::Array[Rating])).returns(T.self_type) }
-  def concat(*records); end
 end
