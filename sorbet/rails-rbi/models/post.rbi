@@ -214,6 +214,50 @@ class Post < ApplicationRecord
   extend Post::CustomFinderMethods
   extend Post::QueryMethodsReturningRelation
   RelationType = T.type_alias { T.any(Post::ActiveRecord_Relation, Post::ActiveRecord_Associations_CollectionProxy, Post::ActiveRecord_AssociationRelation) }
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
+  def self.order_by_score(*args); end
+end
+
+class Post::ActiveRecord_Relation < ActiveRecord::Relation
+  include Post::ActiveRelation_WhereNot
+  include Post::CustomFinderMethods
+  include Post::QueryMethodsReturningRelation
+  Elem = type_member(fixed: Post)
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
+  def order_by_score(*args); end
+end
+
+class Post::ActiveRecord_AssociationRelation < ActiveRecord::AssociationRelation
+  include Post::ActiveRelation_WhereNot
+  include Post::CustomFinderMethods
+  include Post::QueryMethodsReturningAssociationRelation
+  Elem = type_member(fixed: Post)
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
+  def order_by_score(*args); end
+end
+
+class Post::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+  include Post::CustomFinderMethods
+  include Post::QueryMethodsReturningAssociationRelation
+  Elem = type_member(fixed: Post)
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
+  def order_by_score(*args); end
+
+  sig { params(records: T.any(Post, T::Array[Post])).returns(T.self_type) }
+  def <<(*records); end
+
+  sig { params(records: T.any(Post, T::Array[Post])).returns(T.self_type) }
+  def append(*records); end
+
+  sig { params(records: T.any(Post, T::Array[Post])).returns(T.self_type) }
+  def push(*records); end
+
+  sig { params(records: T.any(Post, T::Array[Post])).returns(T.self_type) }
+  def concat(*records); end
 end
 
 module Post::QueryMethodsReturningRelation
@@ -440,36 +484,4 @@ module Post::QueryMethodsReturningAssociationRelation
     ).returns(ActiveRecord::Batches::BatchEnumerator)
   end
   def in_batches(of: 1000, start: nil, finish: nil, load: false, error_on_ignore: nil, &block); end
-end
-
-class Post::ActiveRecord_Relation < ActiveRecord::Relation
-  include Post::ActiveRelation_WhereNot
-  include Post::CustomFinderMethods
-  include Post::QueryMethodsReturningRelation
-  Elem = type_member(fixed: Post)
-end
-
-class Post::ActiveRecord_AssociationRelation < ActiveRecord::AssociationRelation
-  include Post::ActiveRelation_WhereNot
-  include Post::CustomFinderMethods
-  include Post::QueryMethodsReturningAssociationRelation
-  Elem = type_member(fixed: Post)
-end
-
-class Post::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
-  include Post::CustomFinderMethods
-  include Post::QueryMethodsReturningAssociationRelation
-  Elem = type_member(fixed: Post)
-
-  sig { params(records: T.any(Post, T::Array[Post])).returns(T.self_type) }
-  def <<(*records); end
-
-  sig { params(records: T.any(Post, T::Array[Post])).returns(T.self_type) }
-  def append(*records); end
-
-  sig { params(records: T.any(Post, T::Array[Post])).returns(T.self_type) }
-  def push(*records); end
-
-  sig { params(records: T.any(Post, T::Array[Post])).returns(T.self_type) }
-  def concat(*records); end
 end
