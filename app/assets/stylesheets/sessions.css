@@ -2,3 +2,9 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+.login-parent {
+  margin: auto;
+  border: 1.5px solid #e6e6e6;
+  border-radius: 5px;
+  padding: 5px;
+}
