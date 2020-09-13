@@ -32,6 +32,13 @@
   </div>
   <div class="row">
     <%= paginate @posts %>
+    <div class="col-md-6">
+      <span>
+        Sort by:
+        <%= sort_link @q, :created_utc, "Time" %>
+        <%= sort_link @q, :score, "Score" %>
+      </span>
+    </div>
   </div>
   <div class="row">
     <div class="col">
