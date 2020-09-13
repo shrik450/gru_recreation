@@ -1,5 +1,6 @@
 # typed: strict
 Rails.application.routes.draw do
+  get 'root/home'
   get 'sessions/new'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
@@ -8,8 +9,11 @@ Rails.application.routes.draw do
   #   get :rate, on: :member
   # end
 
+  get "/", to: "root#home", as: "root"
+
   # SECTION Authorisation
   get "login", to: "sessions#new", as: "login"
+  post "sessions/new", to: "sessions#new"
   # !SECION
 
   # SECTION Posts

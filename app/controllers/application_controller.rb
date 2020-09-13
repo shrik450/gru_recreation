@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   sig {void}
   def authenticate
     if current_user.blank?
+      session[:redirect_url] = request.original_url
       redirect_to login_url
     end
   end
