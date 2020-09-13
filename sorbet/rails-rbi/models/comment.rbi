@@ -199,6 +199,15 @@ module Comment::GeneratedAttributeMethods
 end
 
 module Comment::GeneratedAssociationMethods
+  sig { returns(::Code::ActiveRecord_Associations_CollectionProxy) }
+  def codes; end
+
+  sig { returns(T::Array[Integer]) }
+  def code_ids; end
+
+  sig { params(value: T::Enumerable[::Code]).void }
+  def codes=(value); end
+
   sig { returns(::Comment::ActiveRecord_Associations_CollectionProxy) }
   def comments; end
 
