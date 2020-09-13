@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_13_053800) do
+ActiveRecord::Schema.define(version: 2020_09_13_070956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "codes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "reference_id", null: false
+    t.string "reference_type", null: false
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["reference_id"], name: "index_codes_on_reference_id"
+    t.index ["reference_type"], name: "index_codes_on_reference_type"
+    t.index ["user_id"], name: "index_codes_on_user_id"
+  end
 
   create_table "comments", id: :string, force: :cascade do |t|
     t.text "body"
@@ -64,6 +76,17 @@ ActiveRecord::Schema.define(version: 2020_09_13_053800) do
     t.index ["subreddit"], name: "index_posts_on_subreddit"
   end
 
+  create_table "ratings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "post_id", null: false
+    t.integer "rating", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_ratings_on_post_id"
+    t.index ["user_id", "post_id"], name: "index_ratings_on_user_id_and_post_id", unique: true
+    t.index ["user_id"], name: "index_ratings_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
@@ -71,4 +94,6 @@ ActiveRecord::Schema.define(version: 2020_09_13_053800) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "codes", "users"
+  add_foreign_key "ratings", "users"
 end

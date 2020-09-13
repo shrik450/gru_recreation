@@ -14,12 +14,12 @@ class ActionMailer::Base
 end
 
 module GeneratedUrlHelpers
-  # Sigs for route /sessions/new(.:format)
+  # Sigs for route /
   sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
-  def sessions_new_path(*args, **kwargs); end
+  def root_path(*args, **kwargs); end
 
   sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
-  def sessions_new_url(*args, **kwargs); end
+  def root_url(*args, **kwargs); end
 
   # Sigs for route /login(.:format)
   sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
@@ -27,4 +27,11 @@ module GeneratedUrlHelpers
 
   sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
   def login_url(*args, **kwargs); end
+
+  # Sigs for route /sessions/new(.:format)
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def sessions_new_path(*args, **kwargs); end
+
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def sessions_new_url(*args, **kwargs); end
 end
