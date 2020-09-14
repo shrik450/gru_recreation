@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   has_many :ratings, inverse_of: :post, dependent: :restrict_with_exception
 
   scope :order_by_score, -> { order("score desc") }
+  scope :rated_by, ->(user) { joins(:ratings).where(ratings: {user_id: user.id}) }
 
   sig {params(month: String).returns(Post::ActiveRecord_Relation)}
   # Returns all posts for a given month.
@@ -18,8 +19,8 @@ class Post < ApplicationRecord
     where(created_utc: (from_date..end_date))
   end
 
-  sig {params(month: String).returns(Post::ActiveRecord_Relation)}
+  sig {params(month: String).returns(T::Array[Post])}
   def self.top_100_for_month(month)
-    for_month(month).order_by_score.first(100)
+    for_month(month).order_by_score.first_n(100)
   end
 end
