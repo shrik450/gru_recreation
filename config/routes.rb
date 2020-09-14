@@ -1,6 +1,5 @@
 # typed: false
 Rails.application.routes.draw do
-  get 'ratings/create'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   # ??? Doesn't seem to generate routes with the :id filter, even if it's on member.
@@ -21,4 +20,6 @@ Rails.application.routes.draw do
   get "posts/", to: "posts#index", as: "posts"
   get "posts/:id", to: "posts#show", as: "posts_show"
   # !SECTION
+
+  resource :rating, only: %i[create]
 end

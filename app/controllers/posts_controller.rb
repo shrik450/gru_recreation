@@ -19,7 +19,9 @@ class PostsController < ApplicationController
   end
 
   def rate
+    @user = current_user
     @next_post = Post.random_top_100_post_unrated_by(current_user)
+    @rating = Rating.new
     render "rate"
   end
 

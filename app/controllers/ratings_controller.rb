@@ -1,8 +1,9 @@
 class RatingsController < ApplicationController
   def create
+    next_post_id = params[:rating][:next_post_id]
     redirect_path =
-      if params[:next_post_id].present?
-        posts_rate_path(params[:next_post_id])
+      if next_post_id.present?
+        posts_rate_path next_post_id
       else
         root_path
       end

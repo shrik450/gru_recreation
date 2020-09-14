@@ -9,15 +9,17 @@
   margin-top: 5px;
 }
 
-.image-row {
+.image-column {
   max-width: 80%;
   margin: auto;
   padding: 5px;
+  display: flex;
+  flex-direction: column;
 }
 
 img {
   border: 1px solid #e6e6e6;
-  max-width: 100%;
+  width: 100%;
 }
 
 .comment {
@@ -36,4 +38,12 @@ img {
 .children {
   margin-left: 20px;
   padding: 2px;
+}
+
+.rate-button-form {
+  min-width: 50%;
+}
+
+.rate-button {
+  width: 100%;
 }
