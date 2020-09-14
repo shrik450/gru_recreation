@@ -20,8 +20,16 @@ class Post < ApplicationRecord
     where(created_utc: (from_date..end_date))
   end
 
-  sig {params(month: String).returns(T::Array[Post])}
+  sig {params(month: String).returns(Post::ActiveRecord_Relation)}
   def self.top_100_for_month(month)
-    for_month(month).order_by_score.first_n(100)
+    for_month(month).order_by_score.limit(100)
+  end
+
+  sig {returns(Post::ActiveRecord_Relation)}
+  def self.top_100_for_any_month
+    ids = ::STUDY_MONTHS.inject([]) {|ids, month|
+      ids += top_100_for_month(month).ids
+    }
+    Post.where(id: ids)
   end
 end
