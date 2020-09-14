@@ -34,4 +34,32 @@ module GeneratedUrlHelpers
 
   sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
   def sessions_new_url(*args, **kwargs); end
+
+  # Sigs for route /posts/rate(.:format)
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def posts_rate_index_path(*args, **kwargs); end
+
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def posts_rate_index_url(*args, **kwargs); end
+
+  # Sigs for route /posts/rate/:id(.:format)
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def posts_rate_path(*args, **kwargs); end
+
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def posts_rate_url(*args, **kwargs); end
+
+  # Sigs for route /posts(.:format)
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def posts_path(*args, **kwargs); end
+
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def posts_url(*args, **kwargs); end
+
+  # Sigs for route /posts/:id(.:format)
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def posts_show_path(*args, **kwargs); end
+
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def posts_show_url(*args, **kwargs); end
 end

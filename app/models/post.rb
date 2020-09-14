@@ -8,6 +8,7 @@ class Post < ApplicationRecord
 
   scope :order_by_score, -> { order("score desc") }
   scope :rated_by, ->(user) { joins(:ratings).where(ratings: {user_id: user.id}) }
+  scope :unrated_by, ->(user) { where.not(id: rated_by(user)) }
 
   sig {params(month: String).returns(Post::ActiveRecord_Relation)}
   # Returns all posts for a given month.

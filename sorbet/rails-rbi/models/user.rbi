@@ -8,6 +8,15 @@ module User::ActiveRelation_WhereNot
 end
 
 module User::GeneratedAttributeMethods
+  sig { returns(T.nilable(T::Boolean)) }
+  def admin; end
+
+  sig { params(value: T.nilable(T::Boolean)).void }
+  def admin=(value); end
+
+  sig { returns(T::Boolean) }
+  def admin?; end
+
   sig { returns(ActiveSupport::TimeWithZone) }
   def created_at; end
 

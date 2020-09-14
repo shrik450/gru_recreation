@@ -20,6 +20,8 @@ require "action_view/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+STUDY_MONTHS = T.let(("01".."12").map {|month| "2019-#{month}"}.freeze, T::Array[String])
+
 module GruRecreate
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

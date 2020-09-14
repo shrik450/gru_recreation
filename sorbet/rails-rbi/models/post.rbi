@@ -217,6 +217,12 @@ class Post < ApplicationRecord
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
   def self.order_by_score(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
+  def self.rated_by(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
+  def self.unrated_by(*args); end
 end
 
 class Post::ActiveRecord_Relation < ActiveRecord::Relation
@@ -227,6 +233,12 @@ class Post::ActiveRecord_Relation < ActiveRecord::Relation
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
   def order_by_score(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
+  def rated_by(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
+  def unrated_by(*args); end
 end
 
 class Post::ActiveRecord_AssociationRelation < ActiveRecord::AssociationRelation
@@ -237,6 +249,12 @@ class Post::ActiveRecord_AssociationRelation < ActiveRecord::AssociationRelation
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
   def order_by_score(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
+  def rated_by(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
+  def unrated_by(*args); end
 end
 
 class Post::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
@@ -246,6 +264,12 @@ class Post::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associatio
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
   def order_by_score(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
+  def rated_by(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
+  def unrated_by(*args); end
 
   sig { params(records: T.any(Post, T::Array[Post])).returns(T.self_type) }
   def <<(*records); end
