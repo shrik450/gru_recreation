@@ -1946,6 +1946,79 @@ class ActiveSupport::Cache::Entry
   def value; end
   def version; end
 end
+module Module::Concerning
+  def concern(topic, &module_definition); end
+  def concerning(topic, &block); end
+end
+module Benchmark
+  def self.ms; end
+end
+module ActiveSupport::MarshalWithAutoloading
+  def load(source, proc = nil); end
+end
+module Digest
+end
+module Digest::UUID
+  def self.uuid_from_hash(hash_class, uuid_namespace, name); end
+  def self.uuid_v3(uuid_namespace, name); end
+  def self.uuid_v4; end
+  def self.uuid_v5(uuid_namespace, name); end
+end
+module ActiveSupport::NumberHelper
+  def number_to_currency(number, options = nil); end
+  def number_to_delimited(number, options = nil); end
+  def number_to_human(number, options = nil); end
+  def number_to_human_size(number, options = nil); end
+  def number_to_percentage(number, options = nil); end
+  def number_to_phone(number, options = nil); end
+  def number_to_rounded(number, options = nil); end
+  extend ActiveSupport::Autoload
+  extend ActiveSupport::NumberHelper
+end
+module ActiveSupport::NumericWithFormat
+  def to_s(format = nil, options = nil); end
+end
+module SecureRandom
+  def self.base36(n = nil); end
+  def self.base58(n = nil); end
+end
+module ActiveSupport::RangeWithFormat
+  def to_default_s(format = nil); end
+  def to_formatted_s(format = nil); end
+  def to_s(format = nil); end
+end
+module ActiveSupport::CompareWithRange
+  def ===(value); end
+  def cover?(value); end
+  def include?(value); end
+end
+module ActiveSupport::IncludeTimeWithZone
+  def include?(value); end
+end
+module ActiveSupport::EachTimeWithZone
+  def each(&block); end
+  def ensure_iteration_allowed; end
+  def step(n = nil, &block); end
+end
+class File < IO
+  def self.atomic_write(file_name, temp_dir = nil); end
+  def self.empty?(arg0); end
+end
+module ActiveSupport::Benchmarkable
+  def benchmark(message = nil, options = nil); end
+end
+class ActiveSupport::FileUpdateChecker
+  def compile_ext(array); end
+  def compile_glob(hash); end
+  def escape(key); end
+  def execute; end
+  def execute_if_updated; end
+  def initialize(files, dirs = nil, &block); end
+  def max_mtime(paths); end
+  def updated?; end
+  def updated_at(paths); end
+  def watched; end
+end
 class ActiveSupport::ExecutionWrapper
   def __callbacks; end
   def __callbacks?; end
@@ -2035,18 +2108,6 @@ class ActiveSupport::Reloader < ActiveSupport::ExecutionWrapper
   def self.to_prepare(*args, &block); end
   def self.wrap; end
 end
-class ActiveSupport::FileUpdateChecker
-  def compile_ext(array); end
-  def compile_glob(hash); end
-  def escape(key); end
-  def execute; end
-  def execute_if_updated; end
-  def initialize(files, dirs = nil, &block); end
-  def max_mtime(paths); end
-  def updated?; end
-  def updated_at(paths); end
-  def watched; end
-end
 class ActiveSupport::ParameterFilter
   def compiled_filter; end
   def filter(params); end
@@ -2081,64 +2142,6 @@ class ActiveSupport::EventedFileUpdateChecker::PathHelper
   def longest_common_subpath(paths); end
   def normalize_extension(ext); end
   def xpath(path); end
-end
-module Module::Concerning
-  def concern(topic, &module_definition); end
-  def concerning(topic, &block); end
-end
-module Benchmark
-  def self.ms; end
-end
-module ActiveSupport::MarshalWithAutoloading
-  def load(source, proc = nil); end
-end
-module Digest
-end
-module Digest::UUID
-  def self.uuid_from_hash(hash_class, uuid_namespace, name); end
-  def self.uuid_v3(uuid_namespace, name); end
-  def self.uuid_v4; end
-  def self.uuid_v5(uuid_namespace, name); end
-end
-module ActiveSupport::NumberHelper
-  def number_to_currency(number, options = nil); end
-  def number_to_delimited(number, options = nil); end
-  def number_to_human(number, options = nil); end
-  def number_to_human_size(number, options = nil); end
-  def number_to_percentage(number, options = nil); end
-  def number_to_phone(number, options = nil); end
-  def number_to_rounded(number, options = nil); end
-  extend ActiveSupport::Autoload
-  extend ActiveSupport::NumberHelper
-end
-module ActiveSupport::NumericWithFormat
-  def to_s(format = nil, options = nil); end
-end
-module SecureRandom
-  def self.base36(n = nil); end
-  def self.base58(n = nil); end
-end
-module ActiveSupport::RangeWithFormat
-  def to_default_s(format = nil); end
-  def to_formatted_s(format = nil); end
-  def to_s(format = nil); end
-end
-module ActiveSupport::CompareWithRange
-  def ===(value); end
-  def cover?(value); end
-  def include?(value); end
-end
-module ActiveSupport::IncludeTimeWithZone
-  def include?(value); end
-end
-module ActiveSupport::EachTimeWithZone
-  def each(&block); end
-  def ensure_iteration_allowed; end
-  def step(n = nil, &block); end
-end
-class File < IO
-  def self.empty?(arg0); end
-  def self.split(arg0); end
 end
 module ActiveSupport::TaggedLogging
   def clear_tags!(*args, &block); end
@@ -2252,9 +2255,6 @@ class ActiveSupport::BacktraceCleaner
   def remove_filters!; end
   def remove_silencers!; end
   def silence(backtrace); end
-end
-module ActiveSupport::Benchmarkable
-  def benchmark(message = nil, options = nil); end
 end
 class ActiveSupport::Cache::MemoryStore < ActiveSupport::Cache::Store
   def cached_size(key, entry); end

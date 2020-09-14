@@ -1,4 +1,4 @@
-# typed: strict
+# typed: false
 class Post < ApplicationRecord
   extend T::Sig
 
@@ -31,5 +31,10 @@ class Post < ApplicationRecord
       ids += top_100_for_month(month).ids
     }
     Post.where(id: ids)
+  end
+
+  sig {params(user: User).returns(T.nilable(Post))}
+  def self.random_top_100_post_unrated_by(user)
+    top_100_for_any_month.unrated_by(user).order("RANDOM()").limit(1).first
   end
 end

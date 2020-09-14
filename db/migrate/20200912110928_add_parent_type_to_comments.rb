@@ -1,3 +1,4 @@
+# typed: ignore
 class AddParentTypeToComments < ActiveRecord::Migration[6.0]
   def up
     add_column :comments, :parent_type, :string

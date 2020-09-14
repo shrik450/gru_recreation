@@ -1,4 +1,4 @@
-# typed: true
+# typed: ignore
 class CreatePosts < ActiveRecord::Migration[6.0]
   def change
     create_table :posts, id: false do |t|

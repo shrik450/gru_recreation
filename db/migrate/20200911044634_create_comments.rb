@@ -1,4 +1,4 @@
-# typed: true
+# typed: ignore
 class CreateComments < ActiveRecord::Migration[6.0]
   def change
     create_table :comments, id: false do |t|

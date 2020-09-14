@@ -4,10 +4,10 @@
 # typed: strong
 module Rating::EnumInstanceMethods
   sig { returns(T::Boolean) }
-  def not_hateful?; end
+  def benign?; end
 
   sig { void }
-  def not_hateful!; end
+  def benign!; end
 
   sig { returns(T::Boolean) }
   def ambiguous?; end
@@ -85,7 +85,7 @@ end
 
 class Rating::RatingEnum < T::Enum
   enums do
-    NotHateful = new(%q{not_hateful})
+    Benign = new(%q{benign})
     Ambiguous = new(%q{ambiguous})
     Hateful = new(%q{hateful})
   end
@@ -156,16 +156,19 @@ class Rating < ApplicationRecord
   def self.ambiguous(*args); end
 
   sig { params(args: T.untyped).returns(Rating::ActiveRecord_Relation) }
+  def self.benign(*args); end
+
+  sig { params(args: T.untyped).returns(Rating::ActiveRecord_Relation) }
   def self.hateful(*args); end
 
   sig { params(args: T.untyped).returns(Rating::ActiveRecord_Relation) }
   def self.not_ambiguous(*args); end
 
   sig { params(args: T.untyped).returns(Rating::ActiveRecord_Relation) }
-  def self.not_hateful(*args); end
+  def self.not_benign(*args); end
 
   sig { params(args: T.untyped).returns(Rating::ActiveRecord_Relation) }
-  def self.not_not_hateful(*args); end
+  def self.not_hateful(*args); end
 
   sig { returns(Rating::RatingEnum) }
   def typed_rating; end
@@ -184,16 +187,19 @@ class Rating::ActiveRecord_Relation < ActiveRecord::Relation
   def ambiguous(*args); end
 
   sig { params(args: T.untyped).returns(Rating::ActiveRecord_Relation) }
+  def benign(*args); end
+
+  sig { params(args: T.untyped).returns(Rating::ActiveRecord_Relation) }
   def hateful(*args); end
 
   sig { params(args: T.untyped).returns(Rating::ActiveRecord_Relation) }
   def not_ambiguous(*args); end
 
   sig { params(args: T.untyped).returns(Rating::ActiveRecord_Relation) }
-  def not_hateful(*args); end
+  def not_benign(*args); end
 
   sig { params(args: T.untyped).returns(Rating::ActiveRecord_Relation) }
-  def not_not_hateful(*args); end
+  def not_hateful(*args); end
 end
 
 class Rating::ActiveRecord_AssociationRelation < ActiveRecord::AssociationRelation
@@ -206,16 +212,19 @@ class Rating::ActiveRecord_AssociationRelation < ActiveRecord::AssociationRelati
   def ambiguous(*args); end
 
   sig { params(args: T.untyped).returns(Rating::ActiveRecord_AssociationRelation) }
+  def benign(*args); end
+
+  sig { params(args: T.untyped).returns(Rating::ActiveRecord_AssociationRelation) }
   def hateful(*args); end
 
   sig { params(args: T.untyped).returns(Rating::ActiveRecord_AssociationRelation) }
   def not_ambiguous(*args); end
 
   sig { params(args: T.untyped).returns(Rating::ActiveRecord_AssociationRelation) }
-  def not_hateful(*args); end
+  def not_benign(*args); end
 
   sig { params(args: T.untyped).returns(Rating::ActiveRecord_AssociationRelation) }
-  def not_not_hateful(*args); end
+  def not_hateful(*args); end
 end
 
 class Rating::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
@@ -227,16 +236,19 @@ class Rating::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associat
   def ambiguous(*args); end
 
   sig { params(args: T.untyped).returns(Rating::ActiveRecord_AssociationRelation) }
+  def benign(*args); end
+
+  sig { params(args: T.untyped).returns(Rating::ActiveRecord_AssociationRelation) }
   def hateful(*args); end
 
   sig { params(args: T.untyped).returns(Rating::ActiveRecord_AssociationRelation) }
   def not_ambiguous(*args); end
 
   sig { params(args: T.untyped).returns(Rating::ActiveRecord_AssociationRelation) }
-  def not_hateful(*args); end
+  def not_benign(*args); end
 
   sig { params(args: T.untyped).returns(Rating::ActiveRecord_AssociationRelation) }
-  def not_not_hateful(*args); end
+  def not_hateful(*args); end
 
   sig { params(records: T.any(Rating, T::Array[Rating])).returns(T.self_type) }
   def <<(*records); end

@@ -1,3 +1,4 @@
+# typed: true
 class RootController < ApplicationController
   def home
     @user = current_user
