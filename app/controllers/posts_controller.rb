@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, except: %i[index]
+  before_action :set_post, except: %i[index rate_index]
 
   def index
     if current_user.admin?
@@ -15,6 +15,9 @@ class PostsController < ApplicationController
   end
 
   def rate
+  end
+
+  def rate_index
   end
 
   private
