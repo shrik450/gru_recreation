@@ -1,0 +1,14 @@
+<% if @user.present? %>
+  <div class="container">
+    <div class="row justify-content-end">
+      <h4><%= @user.email %></h4>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h3>Progress</h3>
+        <p>You have rated <%= @rated_posts.count %> of <%= @all_posts.count %> posts.</p>
+        <p><a href="<%= posts_rate_index_path %>">Go to rating page.</a></p>
+      </div>
+    </div>
+  </div>
+<% end %>
