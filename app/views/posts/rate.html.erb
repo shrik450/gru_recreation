@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2><%= @post.title %></h2>
+      <div class="image-row">
+        <% if @post.url.present? %>
+          <img src="<%= @post.url %>" />
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
