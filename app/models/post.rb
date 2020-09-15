@@ -27,7 +27,7 @@ class Post < ApplicationRecord
 
   sig {returns(Post::ActiveRecord_Relation)}
   def self.top_100_for_any_month
-    ids = ::STUDY_MONTHS.inject([]) {|ids, month|
+    @ids ||= ::STUDY_MONTHS.inject([]) {|ids, month|
       ids += top_100_for_month(month).ids
     }
     Post.where(id: ids)
