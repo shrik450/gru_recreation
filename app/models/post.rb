@@ -27,10 +27,12 @@ class Post < ApplicationRecord
 
   sig {returns(Post::ActiveRecord_Relation)}
   def self.top_100_for_any_month
-    @ids ||= ::STUDY_MONTHS.inject([]) {|ids, month|
+    return @top_100_for_any_month if @top_100_for_any_month.present?
+
+    ids = ::STUDY_MONTHS.inject([]) {|ids, month|
       ids += top_100_for_month(month).ids
     }
-    Post.where(id: ids)
+    @top_100_for_any_month = Post.where(id: ids)
   end
 
   sig {params(user: User).returns(T.nilable(Post))}
