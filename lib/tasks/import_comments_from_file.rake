@@ -45,11 +45,13 @@ namespace :data do
         )
         comment_hash["created_utc"] = Time.at comment_hash["created_utc"]
         comment_hash["edited"] = !!comment_hash["edited"]
-        comment_hash["parent_type"] = if comment_hash["parent_id"].starts_with?("t3")
+        parent_id = comment_hash["parent_id"]
+        comment_hash["parent_type"] = if parent_id.starts_with?("t3")
           "Post"
         else
           "Comment"
         end
+        comment_hash["parent_id"] = parent_id[3..]
         Comment.create!(**comment_hash.symbolize_keys)
       end
     end
@@ -86,11 +88,13 @@ namespace :data do
         )
         comment_hash["created_utc"] = Time.at comment_hash["created_utc"].to_f
         comment_hash["edited"] = !!comment_hash["edited"]
-        comment_hash["parent_type"] = if comment_hash["parent_id"].starts_with?("t3")
+        parent_id = comment_hash["parent_id"]
+        comment_hash["parent_type"] = if parent_id.starts_with?("t3")
           "Post"
         else
           "Comment"
         end
+        comment_hash["parent_id"] = parent_id[3..]
         Comment.create!(**comment_hash.symbolize_keys)
       end
     end
