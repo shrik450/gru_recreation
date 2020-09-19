@@ -1,4 +1,4 @@
-# typed: false
+# typed: strict
 class ApplicationController < ActionController::Base
   extend T::Sig
   before_action :authenticate

@@ -1,4 +1,4 @@
-# typed: false
+# typed: strict
 class Rating < ApplicationRecord
   enum rating: {benign: 0, ambiguous: 1, hateful: 2}
 

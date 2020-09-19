@@ -1,3 +1,4 @@
+# typed: false
 class RatingsController < ApplicationController
   def create
     next_post_id = params[:rating][:next_post_id]

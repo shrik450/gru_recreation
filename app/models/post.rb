@@ -1,4 +1,4 @@
-# typed: false
+# typed: true
 class Post < ApplicationRecord
   extend T::Sig
 

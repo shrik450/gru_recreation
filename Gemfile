@@ -23,6 +23,7 @@ gem "sorbet-rails"
 gem "sprockets-rails", require: "sprockets/railtie"
 
 gem "ruby_linear_regression"
+gem "redcarpet"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

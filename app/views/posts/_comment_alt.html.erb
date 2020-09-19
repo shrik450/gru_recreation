@@ -1,7 +1,7 @@
 <li class="list-group-item comment-alt">
   <div><%= comment.score %> points | <%= comment.author %></div>
   <div class="content">
-    <p><%= comment.body %></p>
+    <p><%= comment_html_body(comment).html_safe %></p>
   </div>
   <% if comment.comments.present? %>
     <ul class="list-group">

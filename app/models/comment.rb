@@ -1,4 +1,4 @@
-# typed: false
+# typed: strict
 class Comment < ApplicationRecord
   # <tt>optional: true</tt> is necessary for now since there's comments from months
   # there are no posts from.
