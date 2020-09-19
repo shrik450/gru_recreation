@@ -159,6 +159,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    ruby_linear_regression (0.1.5)
     safe_type (1.1.1)
     sorbet (0.5.5669)
       sorbet-static (= 0.5.5669)
@@ -210,6 +211,7 @@ DEPENDENCIES
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.2)
   ransack
+  ruby_linear_regression
   sorbet
   sorbet-rails
   sorbet-runtime
