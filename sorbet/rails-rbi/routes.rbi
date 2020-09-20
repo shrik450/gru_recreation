@@ -62,4 +62,18 @@ module GeneratedUrlHelpers
 
   sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
   def posts_show_url(*args, **kwargs); end
+
+  # Sigs for route /posts/:id(.:format)
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def posts_update_path(*args, **kwargs); end
+
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def posts_update_url(*args, **kwargs); end
+
+  # Sigs for route /rating(.:format)
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def rating_path(*args, **kwargs); end
+
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def rating_url(*args, **kwargs); end
 end

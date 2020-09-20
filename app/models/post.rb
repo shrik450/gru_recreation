@@ -1,4 +1,4 @@
-# typed: true
+# typed: strict
 class Post < ApplicationRecord
   extend T::Sig
 
@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   has_many :codes, as: :reference, inverse_of: :reference
   has_many :ratings, inverse_of: :post, dependent: :restrict_with_exception
 
+  scope :image_present, -> { where(image_not_present: false) }
   scope :order_by_score, -> { order("score desc") }
   scope :rated_by, ->(user) { joins(:ratings).where(ratings: {user_id: user.id}) }
   scope :unrated_by, ->(user) { where.not(id: rated_by(user)) }
@@ -17,7 +18,7 @@ class Post < ApplicationRecord
   def self.for_month(month)
     from_date = DateTime.parse(month + "-01")
     end_date = from_date.end_of_month
-    where(created_utc: (from_date..end_date))
+    where(created_utc: (from_date..end_date)).image_present
   end
 
   sig {params(month: String).returns(Post::ActiveRecord_Relation)}
@@ -27,12 +28,10 @@ class Post < ApplicationRecord
 
   sig {returns(Post::ActiveRecord_Relation)}
   def self.top_100_for_any_month
-    return @top_100_for_any_month if @top_100_for_any_month.present?
-
     ids = ::STUDY_MONTHS.inject([]) {|ids, month|
       ids += top_100_for_month(month).ids
     }
-    @top_100_for_any_month = Post.where(id: ids)
+    Post.where(id: ids)
   end
 
   sig {params(user: User).returns(T.nilable(Post))}

@@ -3,6 +3,8 @@
 class MarkdownRenderService
   extend T::Sig
 
+  @renderer = T.let(nil, T.nilable(Redcarpet::Markdown))
+
   sig {returns(Redcarpet::Markdown)}
   def self.renderer
     @renderer ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(filter_html: true))

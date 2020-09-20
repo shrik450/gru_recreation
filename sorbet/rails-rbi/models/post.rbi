@@ -63,6 +63,15 @@ module Post::GeneratedAttributeMethods
   def id?; end
 
   sig { returns(T.nilable(T::Boolean)) }
+  def image_not_present; end
+
+  sig { params(value: T.nilable(T::Boolean)).void }
+  def image_not_present=(value); end
+
+  sig { returns(T::Boolean) }
+  def image_not_present?; end
+
+  sig { returns(T.nilable(T::Boolean)) }
   def is_self; end
 
   sig { params(value: T.nilable(T::Boolean)).void }
@@ -216,6 +225,9 @@ class Post < ApplicationRecord
   RelationType = T.type_alias { T.any(Post::ActiveRecord_Relation, Post::ActiveRecord_Associations_CollectionProxy, Post::ActiveRecord_AssociationRelation) }
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
+  def self.image_present(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
   def self.order_by_score(*args); end
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
@@ -230,6 +242,9 @@ class Post::ActiveRecord_Relation < ActiveRecord::Relation
   include Post::CustomFinderMethods
   include Post::QueryMethodsReturningRelation
   Elem = type_member(fixed: Post)
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
+  def image_present(*args); end
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
   def order_by_score(*args); end
@@ -248,6 +263,9 @@ class Post::ActiveRecord_AssociationRelation < ActiveRecord::AssociationRelation
   Elem = type_member(fixed: Post)
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
+  def image_present(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
   def order_by_score(*args); end
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
@@ -261,6 +279,9 @@ class Post::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associatio
   include Post::CustomFinderMethods
   include Post::QueryMethodsReturningAssociationRelation
   Elem = type_member(fixed: Post)
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
+  def image_present(*args); end
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
   def order_by_score(*args); end

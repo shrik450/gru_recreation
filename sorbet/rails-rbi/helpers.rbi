@@ -11,6 +11,11 @@ module PostsHelper
   include ActionView::Helpers
 end
 
+module RatingsHelper
+  include Kernel
+  include ActionView::Helpers
+end
+
 module RootHelper
   include Kernel
   include ActionView::Helpers
@@ -22,6 +27,6 @@ module SessionsHelper
 end
 
 module ActionController::Helpers
-  sig { returns(T.all(ApplicationHelper, PostsHelper, RootHelper, SessionsHelper)) }
+  sig { returns(T.all(ApplicationHelper, PostsHelper, RatingsHelper, RootHelper, SessionsHelper)) }
   def helpers; end
 end

@@ -21015,10 +21015,6 @@ module GeneratedUrlHelpers
   def rails_mailers_path(*args); end
 
   def rails_mailers_url(*args); end
-
-  def rating_path(*args); end
-
-  def rating_url(*args); end
 end
 
 module GeneratedUrlHelpers
@@ -24842,6 +24838,11 @@ end
 
 Markdown = RedcarpetCompat
 
+class MarkdownRenderService
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
 module Marshal
   extend ::ActiveSupport::MarshalWithAutoloading
   def self.restore(*_); end
@@ -25550,6 +25551,8 @@ end
 
 class Net::HTTPGatewayTimeout
 end
+
+Net::HTTPInformation::EXCEPTION_TYPE = Net::HTTPError
 
 Net::HTTPInformationCode = Net::HTTPInformation
 
@@ -28329,40 +28332,40 @@ module Polyfill
   VERSION = ::T.let(nil, ::T.untyped)
 end
 
-module Polyfill::Module::M47133519318300
+module Polyfill::Module::M46968080859920
 end
 
-module Polyfill::Module::M47133519318300
+module Polyfill::Module::M46968080859920
 end
 
-module Polyfill::Module::M47133519597720
+module Polyfill::Module::M46968081139380
 end
 
-module Polyfill::Module::M47133519597720
+module Polyfill::Module::M46968081139380
 end
 
-module Polyfill::Module::M47133519875640
+module Polyfill::Module::M46968081417360
 end
 
-module Polyfill::Module::M47133519875640
+module Polyfill::Module::M46968081417360
 end
 
-module Polyfill::Module::M47133520534320
+module Polyfill::Module::M46968082067740
 end
 
-module Polyfill::Module::M47133520534320
+module Polyfill::Module::M46968082067740
 end
 
-module Polyfill::Module::M47133520750540
+module Polyfill::Module::M46968082341260
 end
 
-module Polyfill::Module::M47133520750540
+module Polyfill::Module::M46968082341260
 end
 
-module Polyfill::Module::M47133521258260
+module Polyfill::Module::M46968082840840
 end
 
-module Polyfill::Module::M47133521258260
+module Polyfill::Module::M46968082840840
 end
 
 class Post
@@ -28479,6 +28482,8 @@ module Post::GeneratedAttributeMethods
 end
 
 module Post::GeneratedRelationMethods
+  def image_present(*args, &block); end
+
   def order_by_score(*args, &block); end
 
   def rated_by(*args, &block); end
@@ -28574,9 +28579,16 @@ class PostsController
   def rate_index(); end
 
   def show(); end
+
+  def update(); end
 end
 
 class PostsController
+end
+
+module PostsHelper
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
 end
 
 class Proc
