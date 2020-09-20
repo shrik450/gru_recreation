@@ -40,6 +40,12 @@
   </div>
   <hr />
   <div class="row justify-content-center">
+    <% if @user.admin? %>
+      <%= form_with model: @post, url: posts_update_path, class: "rate-button-form" do |f| %>
+        <%= f.hidden_field :image_not_present, value: true %>
+        <%= f.submit "Image Not Present", class: "btn btn-warning"%>
+      <% end %>
+    <% end %>
     <a class="btn btn-danger" href="<%= posts_rate_index_path %>">Skip</a>
   </div>
 </div>

@@ -18,6 +18,14 @@ class PostsController < ApplicationController
     end
   end
 
+  def update
+    if current_user.admin?
+      @post.update(post_params)
+    else
+      render_forbidden
+    end
+  end
+
   def rate
     @user = current_user
     @next_post = Post.random_top_100_post_unrated_by(current_user)
@@ -38,5 +46,9 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def post_params
+    params.require(:post).permit(:image_not_present)
   end
 end
