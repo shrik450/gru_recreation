@@ -3,12 +3,6 @@
   They will automatically be included in application.css.
 */
 
-.post {
-  border: 1.5px solid #e6e6e6;
-  border-radius: 5px;
-  margin-top: 5px;
-}
-
 .image-column {
   max-width: 80%;
   margin: auto;
@@ -17,21 +11,12 @@
   flex-direction: column;
 }
 
-img {
-  border: 1px solid #e6e6e6;
-  width: 100%;
-}
-
 .comment-alt {
   background-color: #f7f7f8;
 }
 
 .rate-button-form {
   min-width: 50%;
-}
-
-.rate-button {
-  width: 100%;
 }
 
 /* From https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/ */

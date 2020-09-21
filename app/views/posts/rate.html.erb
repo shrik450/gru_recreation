@@ -4,7 +4,7 @@
       <h2 style="text-align:center;"><%= @post.title %></h2>
       <div class="image-column justify-content-center">
         <% if @post.url.present? %>
-          <img src="<%= @post.url %>" />
+          <img class="img-fluid rounded" src="<%= @post.url %>" />
         <% end %>
       </div>
     </div>
@@ -16,7 +16,7 @@
         <%= f.hidden_field :post_id, value: @post.id %>
         <%= f.hidden_field :next_post_id, value: @next_post.id %>
         <%= f.hidden_field :rating, value: :benign %>
-        <%= f.submit "Benign", class: "btn btn-secondary rate-button"%>
+        <%= f.submit "Benign", class: "btn btn-secondary w-100"%>
       <% end %>
     </div>
     <div class="col d-flex justify-content-center">
@@ -25,7 +25,7 @@
         <%= f.hidden_field :post_id, value: @post.id %>
         <%= f.hidden_field :next_post_id, value: @next_post.id %>
         <%= f.hidden_field :rating, value: :ambiguous %>
-        <%= f.submit "Ambiguous", class: "btn btn-secondary rate-button"%>
+        <%= f.submit "Ambiguous", class: "btn btn-secondary w-100"%>
       <% end %>
     </div>
     <div class="col d-flex justify-content-center">
@@ -34,7 +34,7 @@
         <%= f.hidden_field :post_id, value: @post.id %>
         <%= f.hidden_field :next_post_id, value: @next_post.id %>
         <%= f.hidden_field :rating, value: :hateful %>
-        <%= f.submit "Hateful", class: "btn btn-secondary rate-button"%>
+        <%= f.submit "Hateful", class: "btn btn-secondary w-100"%>
       <% end %>
     </div>
   </div>
