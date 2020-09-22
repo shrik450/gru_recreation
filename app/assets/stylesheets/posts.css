@@ -24,6 +24,15 @@
   padding: 5px;
 }
 
+.hidden {
+  display: none;
+}
+
+.code-form-body {
+  width: 80%;
+  font-family: monospace;
+}
+
 pre code {
   line-height: 1;
 }

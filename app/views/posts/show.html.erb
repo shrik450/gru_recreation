@@ -1,3 +1,4 @@
+<%= javascript_include_tag "posts.js" %>
 <div class="container border rounded-lg">
   <div class="row">
     <div class="col">
@@ -6,11 +7,24 @@
       <div class="image-column">
         <img class="img-fluid rounded" src="<%= @post.url %>">
       </div>
-      <ul class="list-group codes">
+      <ul class="list-group codes" id="postCodes">
         <% @post.codes.each do |code| %>
           <%= render partial: "code", locals: {code: code} %>
         <% end %>
+        <li class="list-group-item code-block hidden" id="newCodePost">
+          <%= render(
+            partial: "code_form",
+            locals: {
+              reference_id: @post.id,
+              reference_type: "Post",
+              form_id: "newCodePost",
+              button_id: "addPostButton",
+              list_id: "postCodes"
+            }
+          )%>
+        </li>
       </ul>
+      <button class="btn btn-btn-outline-secondary" id="addPostButton" onClick="showAddPostCodeForm()">+</button>
     </div>
   </div>
   <hr />

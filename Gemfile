@@ -21,6 +21,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem "sorbet-runtime"
 gem "sorbet-rails"
 gem "sprockets-rails", require: "sprockets/railtie"
+gem "jquery-rails"
 
 gem "ruby_linear_regression"
 gem "redcarpet"

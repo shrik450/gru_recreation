@@ -1,0 +1,13 @@
+<%= form_with model: Code.new, remote: true, url: code_path, class: "code-form" do |f| %>
+  <%= f.hidden_field :reference_id, value: reference_id %>
+  <%= f.hidden_field :reference_type, value: reference_type %>
+  <%= f.hidden_field :user_id, value: @user.id %>
+  <div class="form-group">
+    <%= f.text_area :body, rows: 3, class: "code-form-body" %>
+  </div>
+  <%# These hidden fields are entirely for js %>
+  <%= f.hidden_field :form_id, value: form_id %>
+  <%= f.hidden_field :list_id, value: list_id %>
+  <%= f.hidden_field :button_id, value: button_id %>
+  <%= f.submit value: "Add", class: "btn btn-outline-secondary" %>
+<% end %>

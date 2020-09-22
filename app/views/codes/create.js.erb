@@ -1,0 +1,6 @@
+console.log("Running erb response...");
+$("#<%= @form_id %>").toggleClass("hidden");
+$("#<%= @button_id %>").toggleClass("hidden");
+$("#<%= @list_id %>").append(
+  "<%= j render(partial: "posts/code", locals: {code: @code}) %>"
+);
