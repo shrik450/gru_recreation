@@ -24,5 +24,6 @@ Rails.application.routes.draw do
 
   resource :rating, only: %i[create]
 
-  resource :code, only: %i[create]
+  post "code", to: "codes#create", as: "code"
+  delete "code/:id", to: "codes#destroy", as: "codes_destroy"
 end

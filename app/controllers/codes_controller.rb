@@ -1,7 +1,7 @@
 # typed: ignore
 
 class CodesController < ApplicationController
-  before_action :render_forbidden_if_not_admin, only: %i[create]
+  before_action :render_forbidden_if_not_admin, only: %i[create destroy]
 
   def create
     @code = Code.new(code_params)
@@ -12,7 +12,14 @@ class CodesController < ApplicationController
     respond_to do |format|
       if @code.save
         format.js {}
-      else
+      end
+    end
+  end
+
+  def destroy
+    @code = Code.find(params[:id])
+    respond_to do |format|
+      if @code.destroy
         format.js {}
       end
     end

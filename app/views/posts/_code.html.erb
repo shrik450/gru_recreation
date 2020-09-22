@@ -1,3 +1,13 @@
-<li class="list-group-item code-block">
-  <pre><code><p>Code by <%= code.user.email %></p><%= code_html_body(code).html_safe %></code></pre>
+<li class="list-group-item code-block" id="code<%= code.id %>">
+  <code>
+    <div class="d-flex">
+      <div>Code by <%= code.user.email %></div>
+      <div style="margin-left:auto;">
+        <%= button_to codes_destroy_path(code.id), method: :delete, remote: true, class: "btn btn-outline-danger" do %>
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        <% end %>
+      </div>
+    </div>
+    <%= code_html_body(code).html_safe %>
+  </code>
 </li>
