@@ -23,4 +23,6 @@ Rails.application.routes.draw do
   # !SECTION
 
   resource :rating, only: %i[create]
+
+  resource :code, only: %i[create]
 end

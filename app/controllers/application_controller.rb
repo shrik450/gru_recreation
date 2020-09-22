@@ -23,4 +23,11 @@ class ApplicationController < ActionController::Base
   def render_forbidden
     render plain: "Forbidden", status: :unauthorized
   end
+
+  sig {void}
+  def render_forbidden_if_not_admin
+    unless T.must(current_user).admin?
+      render_forbidden
+    end
+  end
 end

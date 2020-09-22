@@ -1,15 +1,12 @@
 # typed: ignore
 class PostsController < ApplicationController
   before_action :set_post, except: %i[index rate_index]
+  before_action :render_forbidden_if_not_admin, only: %i[index update]
 
   def index
-    if current_user.admin?
-      @q = Post.ransack(params[:q])
-      @posts = @q.result.page(params[:page])
-      render "index"
-    else
-      render_forbidden
-    end
+    @q = Post.ransack(params[:q])
+    @posts = @q.result.page(params[:page])
+    render "index"
   end
 
   def show
@@ -19,11 +16,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    if current_user.admin?
-      @post.update(post_params)
-    else
-      render_forbidden
-    end
+    @post.update(post_params)
   end
 
   def rate
