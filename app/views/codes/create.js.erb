@@ -1,6 +1,8 @@
-console.log("Running erb response...");
 $("#<%= @form_id %>").toggleClass("hidden");
 $("#<%= @button_id %>").toggleClass("hidden");
+lastChild = $("#<%= @list_id %> li:last-child");
+lastChild.remove();
 $("#<%= @list_id %>").append(
   "<%= j render(partial: "posts/code", locals: {code: @code}) %>"
 );
+$("#<%= @list_id %>").append(lastChild);
