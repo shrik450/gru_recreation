@@ -4,8 +4,18 @@ module PostsHelper
 
   sig {params(comment: Comment).returns(String)}
   def comment_html_body(comment)
-    # CGI doesn't have type annotations, so this let is necessary to let Sorbet know.
-    body = T.let(CGI.unescapeHTML(comment.body), T.nilable(String))
-    MarkdownRenderService.render(T.must(body))
+    markdown_to_html(T.must(comment.body))
+  end
+
+  sig {params(code: Code).returns(String)}
+  def code_html_body(code)
+    markdown_to_html(T.must(code.body))
+  end
+
+  private
+
+  sig {params(content: String).returns(String)}
+  def markdown_to_html(content)
+    MarkdownRenderService.render(CGI.unescapeHTML(content))
   end
 end

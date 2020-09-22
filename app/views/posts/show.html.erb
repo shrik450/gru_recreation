@@ -6,6 +6,11 @@
       <div class="image-column">
         <img class="img-fluid rounded" src="<%= @post.url %>">
       </div>
+      <ul class="list-group codes">
+        <% @post.codes.each do |code| %>
+          <%= render partial: "code", locals: {code: code} %>
+        <% end %>
+      </ul>
     </div>
   </div>
   <hr />
