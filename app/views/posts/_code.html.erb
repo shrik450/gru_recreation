@@ -3,7 +3,7 @@
     <div class="d-flex">
       <div>Code by <%= code.user.email %></div>
       <div style="margin-left:auto;">
-        <%= button_to codes_destroy_path(code.id), method: "delete", remote: true, class: "btn btn-outline-danger" do %>
+        <%= button_to codes_destroy_path(code.id), method: "delete", remote: true, class: "btn btn-outline-dark btn-sm" do %>
           <i class="fa fa-trash"></i>
         <% end %>
       </div>
