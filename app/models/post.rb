@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   has_many :ratings, inverse_of: :post, dependent: :restrict_with_exception
 
   scope :image_present, -> { where(image_not_present: false) }
-  scope :order_by_score, -> { order("score desc") }
+  scope :order_by_score, -> { order(score: :desc) }
   scope :rated_by, ->(user) { joins(:ratings).where(ratings: {user_id: user.id}) }
   scope :unrated_by, ->(user) { where.not(id: rated_by(user)) }
 
@@ -30,7 +30,7 @@ class Post < ApplicationRecord
   def self.top_100_for_any_month(boolean=true)
     if boolean
       ids = ::STUDY_MONTHS.inject([]) {|ids, month|
-        ids += top_100_for_month(month).ids
+        ids += Post.top_100_for_month(month).ids
       }
       Post.where(id: ids)
     else
