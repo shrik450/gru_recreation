@@ -14,7 +14,7 @@
       <%= form_with model: @rating, url: rating_path, class: "rate-button-form" do |f| %>
         <%= f.hidden_field :user_id, value: @user.id %>
         <%= f.hidden_field :post_id, value: @post.id %>
-        <%= f.hidden_field :next_post_id, value: @next_post.id %>
+        <%= f.hidden_field :next_post_id, value: @next_post&.id %>
         <%= f.hidden_field :rating, value: :benign %>
         <%= f.submit "Benign", class: "btn btn-secondary w-100"%>
       <% end %>
@@ -23,7 +23,7 @@
       <%= form_with model: @rating, url: rating_path, class: "rate-button-form" do |f| %>
         <%= f.hidden_field :user_id, value: @user.id %>
         <%= f.hidden_field :post_id, value: @post.id %>
-        <%= f.hidden_field :next_post_id, value: @next_post.id %>
+        <%= f.hidden_field :next_post_id, value: @next_post&.id %>
         <%= f.hidden_field :rating, value: :ambiguous %>
         <%= f.submit "Ambiguous", class: "btn btn-secondary w-100"%>
       <% end %>
@@ -32,7 +32,7 @@
       <%= form_with model: @rating, url: rating_path, class: "rate-button-form" do |f| %>
         <%= f.hidden_field :user_id, value: @user.id %>
         <%= f.hidden_field :post_id, value: @post.id %>
-        <%= f.hidden_field :next_post_id, value: @next_post.id %>
+        <%= f.hidden_field :next_post_id, value: @next_post&.id %>
         <%= f.hidden_field :rating, value: :hateful %>
         <%= f.submit "Hateful", class: "btn btn-secondary w-100"%>
       <% end %>
