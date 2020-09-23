@@ -41,6 +41,10 @@ pre p {
   margin-bottom: 0;
 }
 
+code {
+  color: #212529;
+}
+
 /* From https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/ */
 
 blockquote {
