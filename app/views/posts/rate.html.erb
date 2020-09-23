@@ -11,7 +11,7 @@
   </div>
   <div class="row justify-content-center">
     <div class="col d-flex justify-content-center">
-      <%= form_with model: @rating, url: rating_path, class: "rate-button-form" do |f| %>
+      <%= form_with model: @rating, url: rating_path, local: true, class: "rate-button-form" do |f| %>
         <%= f.hidden_field :user_id, value: @user.id %>
         <%= f.hidden_field :post_id, value: @post.id %>
         <%= f.hidden_field :next_post_id, value: @next_post&.id %>
@@ -20,7 +20,7 @@
       <% end %>
     </div>
     <div class="col d-flex justify-content-center">
-      <%= form_with model: @rating, url: rating_path, class: "rate-button-form" do |f| %>
+      <%= form_with model: @rating, url: rating_path, local: true, class: "rate-button-form" do |f| %>
         <%= f.hidden_field :user_id, value: @user.id %>
         <%= f.hidden_field :post_id, value: @post.id %>
         <%= f.hidden_field :next_post_id, value: @next_post&.id %>
@@ -29,7 +29,7 @@
       <% end %>
     </div>
     <div class="col d-flex justify-content-center">
-      <%= form_with model: @rating, url: rating_path, class: "rate-button-form" do |f| %>
+      <%= form_with model: @rating, url: rating_path, local: true, class: "rate-button-form" do |f| %>
         <%= f.hidden_field :user_id, value: @user.id %>
         <%= f.hidden_field :post_id, value: @post.id %>
         <%= f.hidden_field :next_post_id, value: @next_post&.id %>
