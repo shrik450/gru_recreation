@@ -45,13 +45,18 @@
       <ul class="list-group">
         <% @posts.each do |post| %>
           <li class="list-group-item">
-            <div>
+            <div style="display:flex;">
               <p>
                 <%= post.score %> |
                 <a href="<%= posts_show_path post.id %>"><%= post.title %></a>
               </p>
-              <p>At <%= post.created_utc %> by <%= post.author %></p>
+              <div style="margin-left:auto;">
+                <% post.ratings.each do |rating| %>
+                  <%= rating_symbol(rating).html_safe %>
+                <% end %>
+              </div>
             </div>
+            <p>At <%= post.created_utc %> by <%= post.author %></p>
           </li>
         <% end %>
       </ul>
