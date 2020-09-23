@@ -26,16 +26,25 @@ class Post < ApplicationRecord
     for_month(month).order_by_score.limit(100)
   end
 
-  sig {returns(Post::ActiveRecord_Relation)}
-  def self.top_100_for_any_month
-    ids = ::STUDY_MONTHS.inject([]) {|ids, month|
-      ids += top_100_for_month(month).ids
-    }
-    Post.where(id: ids)
+  sig {params(boolean: T::Boolean).returns(Post::ActiveRecord_Relation)}
+  def self.top_100_for_any_month(boolean=true)
+    if boolean
+      ids = ::STUDY_MONTHS.inject([]) {|ids, month|
+        ids += top_100_for_month(month).ids
+      }
+      Post.where(id: ids)
+    else
+      Post.all
+    end
   end
 
   sig {params(user: User).returns(T.nilable(Post))}
   def self.random_top_100_post_unrated_by(user)
     top_100_for_any_month.unrated_by(user).order("RANDOM()").limit(1).first
+  end
+
+  sig {params(_auth_object: T.untyped).returns(T::Array[Symbol])}
+  def self.ransackable_scopes(_auth_object=nil)
+    %i[top_100_for_month top_100_for_any_month]
   end
 end
