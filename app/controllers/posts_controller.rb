@@ -10,7 +10,10 @@ class PostsController < ApplicationController
   end
 
   def show
-    @code = Code.new
+    comments = @post.comments
+    @q = comments.ransack(params:[:q])
+    @q.sorts = ["score desc"] if @q.sorts.empty?
+    @comments = @q.result(distinct: true).preload(comments: {comments: :comments})
     @user = current_user
   end
 
