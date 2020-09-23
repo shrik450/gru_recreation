@@ -2,8 +2,17 @@
 <div class="container border rounded-lg">
   <div class="row">
     <div class="col">
-      <h2><%= @post.title %></h2>
-      <span><%= @post.score %> points | <%= @post.author %></span>
+      <h2 class="w-75 mx-auto"><%= @post.title %></h2>
+      <div class="row w-75 mx-auto">
+        <div>
+          <%= @post.score %> points | <%= @post.author %>
+        </div>
+        <div style="margin-left:auto;">
+          <% @post.ratings.each do |rating| %>
+            <%= rating_symbol(rating).html_safe %>
+          <% end %>
+        </div>
+      </div>
       <div class="image-column">
         <img class="img-fluid rounded" src="<%= @post.url %>">
       </div>
