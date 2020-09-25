@@ -23,36 +23,7 @@ namespace :data do
         print "Processed #{processed_comments}...\r"
         next if comment_hash["subreddit"].downcase != subreddit.downcase
 
-        comment_hash = comment_hash.slice(
-          "id",
-          "body",
-          "score",
-          "author",
-          "subreddit",
-          "parent_id",
-          "edited",
-          "removal_reason",
-          "can_gild",
-          "can_mod_post",
-          "collapsed",
-          "collapsed_reason",
-          "controversiality",
-          "distinguished",
-          "is_submitter",
-          "no_follow",
-          "removed",
-          "created_utc"
-        )
-        comment_hash["created_utc"] = Time.at comment_hash["created_utc"]
-        comment_hash["edited"] = !!comment_hash["edited"]
-        parent_id = comment_hash["parent_id"]
-        comment_hash["parent_type"] = if parent_id.starts_with?("t3")
-          "Post"
-        else
-          "Comment"
-        end
-        comment_hash["parent_id"] = parent_id[3..]
-        Comment.create!(**comment_hash.symbolize_keys)
+        create_comment_from_comment_hash(comment_hash)
       end
     end
     puts "Processed #{processed_comments}. Done"
@@ -66,38 +37,42 @@ namespace :data do
       comment_array.each do |comment_hash|
         processed_comments += 1
         print "Processed #{processed_comments}...\r"
-        comment_hash = comment_hash.slice(
-          "id",
-          "body",
-          "score",
-          "author",
-          "subreddit",
-          "parent_id",
-          "edited",
-          "removal_reason",
-          "can_gild",
-          "can_mod_post",
-          "collapsed",
-          "collapsed_reason",
-          "controversiality",
-          "distinguished",
-          "is_submitter",
-          "no_follow",
-          "removed",
-          "created_utc"
-        )
-        comment_hash["created_utc"] = Time.at comment_hash["created_utc"].to_f
-        comment_hash["edited"] = !!comment_hash["edited"]
-        parent_id = comment_hash["parent_id"]
-        comment_hash["parent_type"] = if parent_id.starts_with?("t3")
-          "Post"
-        else
-          "Comment"
-        end
-        comment_hash["parent_id"] = parent_id[3..]
-        Comment.create!(**comment_hash.symbolize_keys)
+        create_comment_from_comment_hash(comment_hash)
       end
     end
     puts "Processed #{processed_comments}. Done"
+  end
+
+  def create_comment_from_comment_hash(comment_hash)
+    comment_hash = comment_hash.slice(
+      "id",
+      "body",
+      "score",
+      "author",
+      "subreddit",
+      "parent_id",
+      "edited",
+      "removal_reason",
+      "can_gild",
+      "can_mod_post",
+      "collapsed",
+      "collapsed_reason",
+      "controversiality",
+      "distinguished",
+      "is_submitter",
+      "no_follow",
+      "removed",
+      "created_utc"
+    )
+    comment_hash["created_utc"] = Time.at comment_hash["created_utc"]
+    comment_hash["edited"] = !!comment_hash["edited"]
+    parent_id = comment_hash["parent_id"]
+    comment_hash["parent_type"] = if parent_id.starts_with?("t3")
+      "Post"
+    else
+      "Comment"
+    end
+    comment_hash["parent_id"] = parent_id[3..]
+    Comment.create!(**comment_hash.symbolize_keys)
   end
 end
