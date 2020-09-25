@@ -60,7 +60,7 @@ namespace :data do
       "hidden",
       "removal_reason"
     )
-    post_hash["created_utc"] = Time.at post_hash["created_utc"]
+    post_hash["created_utc"] = Time.at post_hash["created_utc"].to_f
     post_hash["edited"] = !!post_hash["edited"]
     Post.create!(**post_hash.symbolize_keys)
   end

@@ -64,7 +64,7 @@ namespace :data do
       "removed",
       "created_utc"
     )
-    comment_hash["created_utc"] = Time.at comment_hash["created_utc"]
+    comment_hash["created_utc"] = Time.at comment_hash["created_utc"].to_f
     comment_hash["edited"] = !!comment_hash["edited"]
     parent_id = comment_hash["parent_id"]
     comment_hash["parent_type"] = if parent_id.starts_with?("t3")
