@@ -4,6 +4,12 @@ namespace :data do
     file_path = ENV["file_path"]
     subreddit = ENV["subreddit"]
     bq = ENV["bq"]
+
+    if bq
+      process_bq_file(file_path)
+    else
+      process_ps_file(file_path, subreddit)
+    end
   end
 
   def process_bq_file(file_path)
