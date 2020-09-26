@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: gru_recreate_production
-  username: gru_recreate
+  username: <%= ENV['GRU_RECREATE_DATABASE_USER'] %>
   password: <%= ENV['GRU_RECREATE_DATABASE_PASSWORD'] %>
