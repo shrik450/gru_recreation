@@ -21,7 +21,7 @@ require "action_view/railtie"
 Bundler.require(*Rails.groups)
 
 STUDY_MONTHS = T.let(
-  (("07".."12").map {|month| "2018-#{month}"} +
+  (("05".."12").map {|month| "2018-#{month}"} +
    ("01".."11").map {|month| "2019-#{month}"}).freeze,
   T::Array[String]
 )
