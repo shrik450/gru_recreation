@@ -68,6 +68,8 @@ module PostsHelper
   def comment_n_symbol(comment)
     n = comment.author_n
     author = comment.author_
+    return "" unless author.present?
+
     last_n = author.last_comment_n
     if n == last_n
       <<-HTML.strip_heredoc
