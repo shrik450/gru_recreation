@@ -40,15 +40,15 @@ module PostsHelper
     last_n = author.last_post_n
     if n == last_n
       <<-HTML.strip_heredoc
-        <span style="color:#A56416">#{n}</span>
+        <span style="color:#A56416"><b>#{n}</b></span>
       HTML
     elsif n == 1
       <<-HTML.strip_heredoc
-        <span style="color:#428226">#{n}</span>
+        <span style="color:#428226"><b>#{n}</b></span>
       HTML
     else
       <<-HTML.strip_heredoc
-        <span style="color:#C7C4C2">#{n}</span>
+        <span style="color:#C7C4C2"><b>#{n}</b></span>
       HTML
     end
   end
@@ -60,15 +60,15 @@ module PostsHelper
     last_n = author.last_comment_n
     if n == last_n
       <<-HTML.strip_heredoc
-        <span style="color:#A56416">#{n}</span>
+        <span style="color:#A56416"><b>#{n}</b></span>
       HTML
     elsif n == 1
       <<-HTML.strip_heredoc
-        <span style="color:#428226">#{n}</span>
+        <span style="color:#428226"><b>#{n}</b></span>
       HTML
     else
       <<-HTML.strip_heredoc
-        <span style="color:#C7C4C2">#{n}</span>
+        <span style="color:#C7C4C2"><b>#{n}</b></span>
       HTML
     end
   end
