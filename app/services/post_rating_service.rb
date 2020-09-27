@@ -7,10 +7,10 @@ class PostRatingService
   def self.post_ratings_by_month(posts=Post.all)
     result = {}
     STUDY_MONTHS.each do |month|
-      posts = posts.top_100_for_month(month).joins(:ratings)
+      this_months_posts = posts.top_100_for_month(month).joins(:ratings)
       values = {}
       Rating.ratings.each do |rating, _value|
-        values[rating.to_sym] = posts.where(ratings: {rating: rating}).distinct.count
+        values[rating.to_sym] = this_months_posts.where(ratings: {rating: rating}).distinct.count
       end
       result[month] = values
     end
