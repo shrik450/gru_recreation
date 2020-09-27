@@ -17,6 +17,15 @@ module Post::GeneratedAttributeMethods
   sig { returns(T::Boolean) }
   def author?; end
 
+  sig { returns(T.nilable(Integer)) }
+  def author_n; end
+
+  sig { params(value: T.nilable(T.any(Numeric, ActiveSupport::Duration))).void }
+  def author_n=(value); end
+
+  sig { returns(T::Boolean) }
+  def author_n?; end
+
   sig { returns(ActiveSupport::TimeWithZone) }
   def created_at; end
 
@@ -172,6 +181,21 @@ module Post::GeneratedAttributeMethods
 end
 
 module Post::GeneratedAssociationMethods
+  sig { returns(::Author) }
+  def author_; end
+
+  sig { params(args: T.untyped, block: T.nilable(T.proc.params(object: ::Author).void)).returns(::Author) }
+  def build_author_(*args, &block); end
+
+  sig { params(args: T.untyped, block: T.nilable(T.proc.params(object: ::Author).void)).returns(::Author) }
+  def create_author_(*args, &block); end
+
+  sig { params(args: T.untyped, block: T.nilable(T.proc.params(object: ::Author).void)).returns(::Author) }
+  def create_author_!(*args, &block); end
+
+  sig { params(value: ::Author).void }
+  def author_=(value); end
+
   sig { returns(::Code::ActiveRecord_Associations_CollectionProxy) }
   def codes; end
 
@@ -224,7 +248,7 @@ class Post < ApplicationRecord
   extend Post::QueryMethodsReturningRelation
   RelationType = T.type_alias { T.any(Post::ActiveRecord_Relation, Post::ActiveRecord_Associations_CollectionProxy, Post::ActiveRecord_AssociationRelation) }
 
-  sig { params(args: String).returns(Post::ActiveRecord_Relation) }
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
   def self.for_month(*args); end
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
@@ -233,19 +257,22 @@ class Post < ApplicationRecord
   sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
   def self.order_by_score(*args); end
 
-  sig { params(args: User).returns(Post::ActiveRecord_Relation) }
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
   def self.random_top_100_post_unrated_by(*args); end
 
-  sig { params(args: User).returns(Post::ActiveRecord_Relation) }
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
   def self.rated_by(*args); end
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
   def self.top_100_for_any_month(*args); end
 
-  sig { params(args: String).returns(Post::ActiveRecord_Relation) }
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
   def self.top_100_for_month(*args); end
 
-  sig { params(args: User).returns(Post::ActiveRecord_Relation) }
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
+  def self.top_100_for_month_for_search(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
   def self.unrated_by(*args); end
 end
 
@@ -275,6 +302,9 @@ class Post::ActiveRecord_Relation < ActiveRecord::Relation
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
   def top_100_for_month(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
+  def top_100_for_month_for_search(*args); end
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
   def unrated_by(*args); end
@@ -308,6 +338,9 @@ class Post::ActiveRecord_AssociationRelation < ActiveRecord::AssociationRelation
   def top_100_for_month(*args); end
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
+  def top_100_for_month_for_search(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
   def unrated_by(*args); end
 end
 
@@ -336,6 +369,9 @@ class Post::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associatio
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
   def top_100_for_month(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
+  def top_100_for_month_for_search(*args); end
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
   def unrated_by(*args); end

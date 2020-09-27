@@ -33,6 +33,46 @@ module PostsHelper
     end
   end
 
+  sig {params(post: Post).returns(String)}
+  def post_n_symbol(post)
+    n = post.author_n
+    author = post.author_
+    last_n = author.last_post_n
+    if n == last_n
+      <<-HTML.strip_heredoc
+        <span style="color:#A56416">#{n}</span>
+      HTML
+    elsif n == 1
+      <<-HTML.strip_heredoc
+        <span style="color:#428226">#{n}</span>
+      HTML
+    else
+      <<-HTML.strip_heredoc
+        <span style="color:#C7C4C2">#{n}</span>
+      HTML
+    end
+  end
+
+  sig {params(comment: Comment).returns(String)}
+  def comment_n_symbol(comment)
+    n = comment.author_n
+    author = comment.author_
+    last_n = author.last_comment_n
+    if n == last_n
+      <<-HTML.strip_heredoc
+        <span style="color:#A56416">#{n}</span>
+      HTML
+    elsif n == 1
+      <<-HTML.strip_heredoc
+        <span style="color:#428226">#{n}</span>
+      HTML
+    else
+      <<-HTML.strip_heredoc
+        <span style="color:#C7C4C2">#{n}</span>
+      HTML
+    end
+  end
+
   private
 
   sig {params(content: String).returns(String)}

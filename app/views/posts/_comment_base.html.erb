@@ -1,5 +1,5 @@
 <li class="list-group-item">
-  <div><%= comment.score %> points | <%= comment.author %></div>
+  <div><%= comment.score %> points | <%= comment.author %> | <%= comment_n_symbol(comment).html_safe %></div>
   <div class="content">
     <p><%= comment_html_body(comment).html_safe %></p>
     <ul class="list-group codes" id="commentCodes<%= comment.id %>">

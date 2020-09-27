@@ -10113,6 +10113,146 @@ class Array
   def self.wrap(object); end
 end
 
+class Author
+  def after_add_for_comments(); end
+
+  def after_add_for_comments=(val); end
+
+  def after_add_for_comments?(); end
+
+  def after_add_for_posts(); end
+
+  def after_add_for_posts=(val); end
+
+  def after_add_for_posts?(); end
+
+  def after_remove_for_comments(); end
+
+  def after_remove_for_comments=(val); end
+
+  def after_remove_for_comments?(); end
+
+  def after_remove_for_posts(); end
+
+  def after_remove_for_posts=(val); end
+
+  def after_remove_for_posts?(); end
+
+  def autosave_associated_records_for_comments(*args); end
+
+  def autosave_associated_records_for_posts(*args); end
+
+  def before_add_for_comments(); end
+
+  def before_add_for_comments=(val); end
+
+  def before_add_for_comments?(); end
+
+  def before_add_for_posts(); end
+
+  def before_add_for_posts=(val); end
+
+  def before_add_for_posts?(); end
+
+  def before_remove_for_comments(); end
+
+  def before_remove_for_comments=(val); end
+
+  def before_remove_for_comments?(); end
+
+  def before_remove_for_posts(); end
+
+  def before_remove_for_posts=(val); end
+
+  def before_remove_for_posts?(); end
+
+  def validate_associated_records_for_comments(*args); end
+
+  def validate_associated_records_for_posts(*args); end
+end
+
+class Author::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Author::GeneratedRelationMethods
+end
+
+class Author::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Author::GeneratedRelationMethods
+end
+
+class Author::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Author::GeneratedRelationMethods
+end
+
+module Author::GeneratedAssociationMethods
+  def comment_ids=(ids); end
+
+  def post_ids=(ids); end
+end
+
+module Author::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Author::GeneratedRelationMethods
+end
+
+module Author::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
+class Author
+  def self.after_add_for_comments(); end
+
+  def self.after_add_for_comments=(val); end
+
+  def self.after_add_for_comments?(); end
+
+  def self.after_add_for_posts(); end
+
+  def self.after_add_for_posts=(val); end
+
+  def self.after_add_for_posts?(); end
+
+  def self.after_remove_for_comments(); end
+
+  def self.after_remove_for_comments=(val); end
+
+  def self.after_remove_for_comments?(); end
+
+  def self.after_remove_for_posts(); end
+
+  def self.after_remove_for_posts=(val); end
+
+  def self.after_remove_for_posts?(); end
+
+  def self.before_add_for_comments(); end
+
+  def self.before_add_for_comments=(val); end
+
+  def self.before_add_for_comments?(); end
+
+  def self.before_add_for_posts(); end
+
+  def self.before_add_for_posts=(val); end
+
+  def self.before_add_for_posts?(); end
+
+  def self.before_remove_for_comments(); end
+
+  def self.before_remove_for_comments=(val); end
+
+  def self.before_remove_for_comments?(); end
+
+  def self.before_remove_for_posts(); end
+
+  def self.before_remove_for_posts=(val); end
+
+  def self.before_remove_for_posts?(); end
+end
+
 class BCrypt::Engine
   DEFAULT_COST = ::T.let(nil, ::T.untyped)
   MAX_COST = ::T.let(nil, ::T.untyped)
@@ -15670,6 +15810,8 @@ class Comment
 
   def after_remove_for_comments?(); end
 
+  def autosave_associated_records_for_author_(*args); end
+
   def autosave_associated_records_for_codes(*args); end
 
   def autosave_associated_records_for_comments(*args); end
@@ -15724,6 +15866,8 @@ module Comment::GeneratedAssociationMethods
   def code_ids=(ids); end
 
   def comment_ids=(ids); end
+
+  def reload_author_(); end
 
   def reload_parent(); end
 end
@@ -25564,7 +25708,13 @@ end
 class Net::HTTPRangeNotSatisfiable
 end
 
-Net::HTTPRedirectionCode = Net::HTTPRedirection
+class Net::HTTPRedirection
+end
+
+Net::HTTPRedirectionCode::EXCEPTION_TYPE = Net::HTTPRetriableError
+
+class Net::HTTPRedirection
+end
 
 class Net::HTTPRequestTimeout
   HAS_BODY = ::T.let(nil, ::T.untyped)
@@ -25577,21 +25727,11 @@ Net::HTTPRequestURITooLarge = Net::HTTPURITooLong
 
 Net::HTTPResponceReceiver = Net::HTTPResponse
 
-class Net::HTTPRedirection
-end
+Net::HTTPRetriableCode = Net::HTTPRedirection
 
-Net::HTTPRetriableCode::EXCEPTION_TYPE = Net::HTTPRetriableError
+Net::HTTPServerError::EXCEPTION_TYPE = Net::HTTPFatalError
 
-class Net::HTTPRedirection
-end
-
-class Net::HTTPServerError
-end
-
-Net::HTTPServerErrorCode::EXCEPTION_TYPE = Net::HTTPFatalError
-
-class Net::HTTPServerError
-end
+Net::HTTPServerErrorCode = Net::HTTPServerError
 
 class Net::HTTP
 end
@@ -28306,40 +28446,40 @@ module Polyfill
   VERSION = ::T.let(nil, ::T.untyped)
 end
 
-module Polyfill::Module::M46994640749220
+module Polyfill::Module::M47130060422380
 end
 
-module Polyfill::Module::M46994640749220
+module Polyfill::Module::M47130060422380
 end
 
-module Polyfill::Module::M46994649013840
+module Polyfill::Module::M47130060644520
 end
 
-module Polyfill::Module::M46994649013840
+module Polyfill::Module::M47130060644520
 end
 
-module Polyfill::Module::M46994649244200
+module Polyfill::Module::M47130060971560
 end
 
-module Polyfill::Module::M46994649244200
+module Polyfill::Module::M47130060971560
 end
 
-module Polyfill::Module::M46994649530440
+module Polyfill::Module::M47130061581160
 end
 
-module Polyfill::Module::M46994649530440
+module Polyfill::Module::M47130061581160
 end
 
-module Polyfill::Module::M46994650180880
+module Polyfill::Module::M47130061854700
 end
 
-module Polyfill::Module::M46994650180880
+module Polyfill::Module::M47130061854700
 end
 
-module Polyfill::Module::M46994650413120
+module Polyfill::Module::M47130062362500
 end
 
-module Polyfill::Module::M46994650413120
+module Polyfill::Module::M47130062362500
 end
 
 class Post
@@ -28378,6 +28518,8 @@ class Post
   def after_remove_for_ratings=(val); end
 
   def after_remove_for_ratings?(); end
+
+  def autosave_associated_records_for_author_(*args); end
 
   def autosave_associated_records_for_codes(*args); end
 
@@ -28449,6 +28591,8 @@ module Post::GeneratedAssociationMethods
   def comment_ids=(ids); end
 
   def rating_ids=(ids); end
+
+  def reload_author_(); end
 end
 
 module Post::GeneratedAttributeMethods
@@ -28469,6 +28613,8 @@ module Post::GeneratedRelationMethods
   def top_100_for_any_month(*args, &block); end
 
   def top_100_for_month(*args, &block); end
+
+  def top_100_for_month_for_search(*args, &block); end
 
   def unrated_by(*args, &block); end
 end

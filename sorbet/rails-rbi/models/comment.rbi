@@ -17,6 +17,15 @@ module Comment::GeneratedAttributeMethods
   sig { returns(T::Boolean) }
   def author?; end
 
+  sig { returns(T.nilable(Integer)) }
+  def author_n; end
+
+  sig { params(value: T.nilable(T.any(Numeric, ActiveSupport::Duration))).void }
+  def author_n=(value); end
+
+  sig { returns(T::Boolean) }
+  def author_n?; end
+
   sig { returns(T.nilable(String)) }
   def body; end
 
@@ -199,6 +208,21 @@ module Comment::GeneratedAttributeMethods
 end
 
 module Comment::GeneratedAssociationMethods
+  sig { returns(::Author) }
+  def author_; end
+
+  sig { params(args: T.untyped, block: T.nilable(T.proc.params(object: ::Author).void)).returns(::Author) }
+  def build_author_(*args, &block); end
+
+  sig { params(args: T.untyped, block: T.nilable(T.proc.params(object: ::Author).void)).returns(::Author) }
+  def create_author_(*args, &block); end
+
+  sig { params(args: T.untyped, block: T.nilable(T.proc.params(object: ::Author).void)).returns(::Author) }
+  def create_author_!(*args, &block); end
+
+  sig { params(value: ::Author).void }
+  def author_=(value); end
+
   sig { returns(::Code::ActiveRecord_Associations_CollectionProxy) }
   def codes; end
 
