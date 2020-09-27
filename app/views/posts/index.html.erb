@@ -59,6 +59,7 @@
         Sort by:
         <%= sort_link @q, :created_utc, "Time" %>
         <%= sort_link @q, :score, "Score" %>
+        <%= sort_link @q, :time_and_score, ["created_utc", "score desc"], "Score" %>
       </span>
     </div>
   </div>
