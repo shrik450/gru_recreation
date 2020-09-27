@@ -1,7 +1,7 @@
 <li class="list-group-item <%= classes %>">
   <div><%= comment.score %> points | <%= comment.author %> | <%= comment_n_symbol(comment).html_safe %></div>
   <div class="content">
-    <p><%= comment_html_body(comment).html_safe %></p>
+    <%= comment_html_body(comment).html_safe %>
     <ul class="list-group codes" id="commentCodes<%= comment.id %>">
       <% comment.codes.each do |code| %>
         <%= render partial: "code", locals: {code: code} %>

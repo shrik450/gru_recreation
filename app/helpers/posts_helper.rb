@@ -4,7 +4,16 @@ module PostsHelper
 
   sig {params(comment: Comment).returns(String)}
   def comment_html_body(comment)
-    markdown_to_html(T.must(comment.body))
+    base = markdown_to_html(T.must(comment.body))
+    if comment.removed?
+      <<-HTML.strip_heredoc
+        <div style="background-color:red;">#{base}</div>
+      HTML
+    else
+      <<-HTML.strip_heredoc
+        <div>#{base}</div>
+      HTML
+    end
   end
 
   sig {params(code: Code).returns(String)}
