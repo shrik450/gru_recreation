@@ -46,6 +46,8 @@ module PostsHelper
   def post_n_symbol(post)
     n = post.author_n
     author = post.author_
+    return "" unless author.present?
+
     last_n = author.last_post_n
     if n == last_n
       <<-HTML.strip_heredoc
