@@ -16,8 +16,12 @@ class Post < ApplicationRecord
     end_date = from_date.end_of_month
     where(created_utc: (from_date..end_date)).image_present
   }
-  scope :top_100_for_month, lambda {|month|
-    for_month(month).order_by_score.limit(100)
+
+  scope :top_100_for_month, ->(month) { for_month(month).order_by_score.limit(100) }
+  # This scope prevents a clash with the ransack sorts.
+  scope :top_100_for_month_for_search, lambda {|month|
+    ids = top_100_for_month(month).ids
+    Post.where(id: ids)
   }
 
   scope :top_100_for_any_month, lambda {|boolean=true|
@@ -37,6 +41,6 @@ class Post < ApplicationRecord
 
   sig {params(_auth_object: T.untyped).returns(T::Array[Symbol])}
   def self.ransackable_scopes(_auth_object=nil)
-    %i[top_100_for_month top_100_for_any_month]
+    %i[top_100_for_month_for_search top_100_for_any_month]
   end
 end
