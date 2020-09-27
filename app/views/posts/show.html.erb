@@ -45,7 +45,7 @@
       <%# Load four levels of comments, which should be enough to save a lot of queries. %>
       <ul class="list-group">
         <% @comments.each do |comment| %>
-          <%= render partial: "comment_base", locals: {comment: comment} %>
+          <%= render partial: "comment_base", locals: {comment: comment, classes: ""} %>
         <% end %>
       </ul>
     </div>
