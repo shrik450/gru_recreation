@@ -1,4 +1,3 @@
-# typed: strict
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_20_014232) do
+ActiveRecord::Schema.define(version: 2020_09_27_074230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "authors", primary_key: "name", id: :string, force: :cascade do |t|
+    t.integer "last_post_n"
+    t.integer "last_comment_n"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "codes", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -49,6 +55,7 @@ ActiveRecord::Schema.define(version: 2020_09_20_014232) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "parent_type", null: false
+    t.integer "author_n"
     t.index ["author"], name: "index_comments_on_author"
     t.index ["parent_id"], name: "index_comments_on_parent_id"
     t.index ["score"], name: "index_comments_on_score"
@@ -73,6 +80,7 @@ ActiveRecord::Schema.define(version: 2020_09_20_014232) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "image_not_present", default: false
+    t.integer "author_n"
     t.index ["author"], name: "index_posts_on_author"
     t.index ["score"], name: "index_posts_on_score"
     t.index ["subreddit"], name: "index_posts_on_subreddit"
