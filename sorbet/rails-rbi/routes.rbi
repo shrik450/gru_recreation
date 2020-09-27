@@ -76,4 +76,18 @@ module GeneratedUrlHelpers
 
   sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
   def rating_url(*args, **kwargs); end
+
+  # Sigs for route /code(.:format)
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def code_path(*args, **kwargs); end
+
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def code_url(*args, **kwargs); end
+
+  # Sigs for route /code/:id(.:format)
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def codes_destroy_path(*args, **kwargs); end
+
+  sig { params(args: T.untyped, kwargs: T.untyped).returns(String) }
+  def codes_destroy_url(*args, **kwargs); end
 end

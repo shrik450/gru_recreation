@@ -224,16 +224,28 @@ class Post < ApplicationRecord
   extend Post::QueryMethodsReturningRelation
   RelationType = T.type_alias { T.any(Post::ActiveRecord_Relation, Post::ActiveRecord_Associations_CollectionProxy, Post::ActiveRecord_AssociationRelation) }
 
+  sig { params(args: String).returns(Post::ActiveRecord_Relation) }
+  def self.for_month(*args); end
+
   sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
   def self.image_present(*args); end
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
   def self.order_by_score(*args); end
 
-  sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
+  sig { params(args: User).returns(Post::ActiveRecord_Relation) }
+  def self.random_top_100_post_unrated_by(*args); end
+
+  sig { params(args: User).returns(Post::ActiveRecord_Relation) }
   def self.rated_by(*args); end
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
+  def self.top_100_for_any_month(*args); end
+
+  sig { params(args: String).returns(Post::ActiveRecord_Relation) }
+  def self.top_100_for_month(*args); end
+
+  sig { params(args: User).returns(Post::ActiveRecord_Relation) }
   def self.unrated_by(*args); end
 end
 
@@ -244,13 +256,25 @@ class Post::ActiveRecord_Relation < ActiveRecord::Relation
   Elem = type_member(fixed: Post)
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
+  def for_month(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
   def image_present(*args); end
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
   def order_by_score(*args); end
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
+  def random_top_100_post_unrated_by(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
   def rated_by(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
+  def top_100_for_any_month(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
+  def top_100_for_month(*args); end
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_Relation) }
   def unrated_by(*args); end
@@ -263,13 +287,25 @@ class Post::ActiveRecord_AssociationRelation < ActiveRecord::AssociationRelation
   Elem = type_member(fixed: Post)
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
+  def for_month(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
   def image_present(*args); end
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
   def order_by_score(*args); end
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
+  def random_top_100_post_unrated_by(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
   def rated_by(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
+  def top_100_for_any_month(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
+  def top_100_for_month(*args); end
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
   def unrated_by(*args); end
@@ -281,13 +317,25 @@ class Post::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associatio
   Elem = type_member(fixed: Post)
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
+  def for_month(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
   def image_present(*args); end
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
   def order_by_score(*args); end
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
+  def random_top_100_post_unrated_by(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
   def rated_by(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
+  def top_100_for_any_month(*args); end
+
+  sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
+  def top_100_for_month(*args); end
 
   sig { params(args: T.untyped).returns(Post::ActiveRecord_AssociationRelation) }
   def unrated_by(*args); end
