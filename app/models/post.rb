@@ -10,6 +10,7 @@ class Post < ApplicationRecord
   scope :order_by_score, -> { order(score: :desc) }
   scope :rated_by, ->(user) { joins(:ratings).where(ratings: {user_id: user.id}) }
   scope :unrated_by, ->(user) { where.not(id: rated_by(user)) }
+
   scope :for_month, lambda {|month|
     from_date = DateTime.parse(month + "-01")
     end_date = from_date.end_of_month
