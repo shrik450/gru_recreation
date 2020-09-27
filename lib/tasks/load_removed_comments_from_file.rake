@@ -13,7 +13,6 @@ namespace :data do
         print "Processed #{processed_comments}...\r"
         comment = Comment.find_by(id: comment_hash["id"])
         if comment.present?
-          comment.score = comment_hash["score"]
           comment.body = comment_hash["body"]
           comment.author = comment_hash["author"]
           comment.removed = true
