@@ -1,5 +1,10 @@
 <li class="list-group-item <%= classes %>">
-  <div><%= comment.score %> points | <%= comment.author %> | <%= comment_n_symbol(comment).html_safe %></div>
+  <div>
+    <%= comment.score %> points |
+    <%= comment.author %> |
+    <%= comment.created_utc %> |
+    <%= comment_n_symbol(comment).html_safe %>
+  </div>
   <div class="content">
     <%= comment_html_body(comment).html_safe %>
     <ul class="list-group codes" id="commentCodes<%= comment.id %>">

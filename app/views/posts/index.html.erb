@@ -65,7 +65,7 @@
   <div class="row">
     <div class="col">
       <ul class="list-group">
-        <% @posts.each do |post| %>
+        <% @posts.includes(:codes).each do |post| %>
           <li class="list-group-item">
             <div style="display:flex;">
               <p>
@@ -73,6 +73,9 @@
                 <a href="<%= posts_show_path post.id %>"><%= post.title %></a>
               </p>
               <div style="margin-left:auto;">
+                <% if post.codes.present? %>
+                  <i class="fa fa-comment"></i>
+                <% end %>
                 <% post.ratings.each do |rating| %>
                   <%= rating_symbol(rating).html_safe %>
                 <% end %>
