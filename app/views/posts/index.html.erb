@@ -74,8 +74,12 @@
               </p>
               <div style="margin-left:auto;">
                 <% if post.codes.present? %>
-                  <i class="fa fa-comment"></i>
+                  <i class="fa fa-sticky-note-o"></i>
                 <% end %>
+                <span>
+                  <i class="fa fa-comment"></i>
+                  <%= post.num_comments %>
+                </span>
                 <% post.ratings.each do |rating| %>
                   <%= rating_symbol(rating).html_safe %>
                 <% end %>

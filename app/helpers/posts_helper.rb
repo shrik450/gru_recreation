@@ -16,6 +16,14 @@ module PostsHelper
     end
   end
 
+  sig {params(post: Post).returns(String)}
+  def post_html_body(post)
+    base = markdown_to_html(T.must(post.selftext))
+    <<-HTML.strip_heredoc
+      <div>#{base}</div>
+    HTML
+  end
+
   sig {params(code: Code).returns(String)}
   def code_html_body(code)
     markdown_to_html(T.must(code.body))

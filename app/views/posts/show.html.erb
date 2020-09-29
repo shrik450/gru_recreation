@@ -17,7 +17,11 @@
         </div>
       </div>
       <div class="image-column">
-        <img class="img-fluid rounded" src="<%= @post.url %>">
+        <% if @post.is_self? %>
+          <%= post_html_body(@post).html_safe %>
+        <% else %>
+          <img class="img-fluid rounded" src="<%= @post.url %>">
+        <% end %>
       </div>
       <ul class="list-group codes" id="postCodes">
         <% @post.codes.each do |code| %>
