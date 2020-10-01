@@ -208,7 +208,7 @@ module Comment::GeneratedAttributeMethods
 end
 
 module Comment::GeneratedAssociationMethods
-  sig { returns(::Author) }
+  sig { returns(T.nilable(::Author)) }
   def author_; end
 
   sig { params(args: T.untyped, block: T.nilable(T.proc.params(object: ::Author).void)).returns(::Author) }
@@ -220,7 +220,7 @@ module Comment::GeneratedAssociationMethods
   sig { params(args: T.untyped, block: T.nilable(T.proc.params(object: ::Author).void)).returns(::Author) }
   def create_author_!(*args, &block); end
 
-  sig { params(value: ::Author).void }
+  sig { params(value: T.nilable(::Author)).void }
   def author_=(value); end
 
   sig { returns(::Code::ActiveRecord_Associations_CollectionProxy) }

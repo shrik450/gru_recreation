@@ -37,6 +37,15 @@ module Rating::GeneratedAttributeMethods
   sig { returns(T::Boolean) }
   def created_at?; end
 
+  sig { returns(T.nilable(T::Boolean)) }
+  def hidden; end
+
+  sig { params(value: T.nilable(T::Boolean)).void }
+  def hidden=(value); end
+
+  sig { returns(T::Boolean) }
+  def hidden?; end
+
   sig { returns(Integer) }
   def id; end
 

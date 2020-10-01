@@ -25628,13 +25628,9 @@ end
 class Net::HTTPAlreadyReported
 end
 
-class Net::HTTPClientError
-end
+Net::HTTPClientError::EXCEPTION_TYPE = Net::HTTPServerException
 
-Net::HTTPClientErrorCode::EXCEPTION_TYPE = Net::HTTPServerException
-
-class Net::HTTPClientError
-end
+Net::HTTPClientErrorCode = Net::HTTPClientError
 
 Net::HTTPClientException = Net::HTTPServerException
 
@@ -25708,13 +25704,9 @@ end
 class Net::HTTPRangeNotSatisfiable
 end
 
-class Net::HTTPRedirection
-end
+Net::HTTPRedirection::EXCEPTION_TYPE = Net::HTTPRetriableError
 
-Net::HTTPRedirectionCode::EXCEPTION_TYPE = Net::HTTPRetriableError
-
-class Net::HTTPRedirection
-end
+Net::HTTPRedirectionCode = Net::HTTPRedirection
 
 class Net::HTTPRequestTimeout
   HAS_BODY = ::T.let(nil, ::T.untyped)
@@ -28446,40 +28438,40 @@ module Polyfill
   VERSION = ::T.let(nil, ::T.untyped)
 end
 
-module Polyfill::Module::M47130060422380
+module Polyfill::Module::M47029046689240
 end
 
-module Polyfill::Module::M47130060422380
+module Polyfill::Module::M47029046689240
 end
 
-module Polyfill::Module::M47130060644520
+module Polyfill::Module::M47029054929840
 end
 
-module Polyfill::Module::M47130060644520
+module Polyfill::Module::M47029054929840
 end
 
-module Polyfill::Module::M47130060971560
+module Polyfill::Module::M47029055201140
 end
 
-module Polyfill::Module::M47130060971560
+module Polyfill::Module::M47029055201140
 end
 
-module Polyfill::Module::M47130061581160
+module Polyfill::Module::M47029055487380
 end
 
-module Polyfill::Module::M47130061581160
+module Polyfill::Module::M47029055487380
 end
 
-module Polyfill::Module::M47130061854700
+module Polyfill::Module::M47029056088680
 end
 
-module Polyfill::Module::M47130061854700
+module Polyfill::Module::M47029056088680
 end
 
-module Polyfill::Module::M47130062362500
+module Polyfill::Module::M47029056320160
 end
 
-module Polyfill::Module::M47130062362500
+module Polyfill::Module::M47029056320160
 end
 
 class Post

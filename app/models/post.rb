@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   belongs_to :author_, class_name: "Author", foreign_key: :author
   has_many :comments, as: :parent, inverse_of: :parent
   has_many :codes, as: :reference, inverse_of: :reference
-  has_many :ratings, inverse_of: :post, dependent: :restrict_with_exception
+  has_many :ratings, -> { where(hidden: false) }, inverse_of: :post, dependent: :restrict_with_exception
 
   scope :image_present, -> { where(image_not_present: false) }
   scope :order_by_score, -> { order(score: :desc) }
