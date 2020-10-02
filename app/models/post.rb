@@ -21,8 +21,11 @@ class Post < ApplicationRecord
   scope :top_100_for_month, ->(month) { for_month(month).order_by_score.limit(100) }
   # This scope prevents a clash with the ransack sorts.
   scope :top_100_for_month_for_search, lambda {|month|
-    ids = Post.all.top_100_for_month(month).ids
-    Post.where(id: ids)
+    posts = Post.all.top_100_for_month(month)
+    # The LIMIT 100 doesn't seem to work very well when this scope
+    # is called inside ransack.
+    ids = posts.distinct.map(&:id)
+    where(id: ids)
   }
 
   scope :top_100_for_any_month, lambda {|boolean=true|
