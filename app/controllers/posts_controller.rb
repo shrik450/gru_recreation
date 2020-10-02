@@ -5,7 +5,10 @@ class PostsController < ApplicationController
 
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true).page(params[:page])
+    @posts = @q.result(distinct: true)
+    if @posts.count > 100
+      @posts = @post.page(params[:page])
+    end
     render "index"
   end
 
