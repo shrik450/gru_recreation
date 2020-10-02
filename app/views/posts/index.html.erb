@@ -42,6 +42,10 @@
           <%= f.label "Top 100 from month" %>
           <%= f.search_field :top_100_for_month_for_search, class: "form-control" %>
         </div>
+        <div class="form-group col">
+          <%= f.label "Top 100 for any month" %>
+          <%= f.check_box :top_100_for_any_month, class: "form-control" %>
+        </div>
       </div>
       <div class="row justify-content-center">
         <%= f.submit %>
