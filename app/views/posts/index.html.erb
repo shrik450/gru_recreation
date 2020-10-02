@@ -56,6 +56,9 @@
     <%= paginate @posts %>
     <div class="col-md-6">
       <span>
+        <%= @posts.count %> posts.
+      </span>
+      <span>
         Sort by:
         <%= sort_link @q, :created_utc, "Time" %>
         <%= sort_link @q, :score, "Score" %>
