@@ -47,4 +47,17 @@ class Post < ApplicationRecord
   def self.ransackable_scopes(_auth_object=nil)
     %i[top_100_for_month_for_search top_100_for_any_month]
   end
+
+  sig {returns(T.nilable(Integer))}
+  # Returns the rank of the post, if it was in the top 100.
+  # Extremely inefficient.
+  def rank
+    created_utc = T.must(self.created_utc)
+    month = "#{created_utc.year}-#{created_utc.month}"
+    top_100 = Post.top_100_for_month(month)
+    # byebug
+    if top_100.find_by(id: id).present?
+      top_100.pluck("id, RANK() OVER(ORDER BY score DESC)").to_h[id]
+    end
+  end
 end

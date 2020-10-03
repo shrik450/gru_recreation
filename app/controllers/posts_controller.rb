@@ -11,6 +11,7 @@ class PostsController < ApplicationController
 
   def show
     comments = @post.comments
+    @title = @post.title
     @q = comments.ransack(params:[:q])
     @q.sorts = ["score desc"] if @q.sorts.empty?
     @comments = @q.result(distinct: true).preload(comments: {comments: :comments})
