@@ -3,6 +3,15 @@
 class PostRatingService
   extend T::Sig
 
+  sig{params(posts: Post::ActiveRecord_Relation).returns(T::Hash[String, Post::ActiveRecord_Relation])}
+  def self.top_posts_by_month(posts=Post.all)
+    result = {}
+    STUDY_MONTHS.each do |month|
+      result[month] = posts.top_100_for_month(month)
+    end
+    result
+  end
+
   sig{ params(posts: Post::ActiveRecord_Relation).returns(T::Hash[String, T::Hash[Symbol, Numeric]]) }
   def self.post_ratings_by_month(posts=Post.all)
     result = {}
