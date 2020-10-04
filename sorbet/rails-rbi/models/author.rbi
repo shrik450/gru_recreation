@@ -44,6 +44,15 @@ module Author::GeneratedAttributeMethods
   sig { returns(T::Boolean) }
   def name?; end
 
+  sig { returns(T.nilable(T::Array[String])) }
+  def subreddit_history; end
+
+  sig { params(value: T.nilable(T::Array[T.any(String, Symbol)])).void }
+  def subreddit_history=(value); end
+
+  sig { returns(T::Boolean) }
+  def subreddit_history?; end
+
   sig { returns(ActiveSupport::TimeWithZone) }
   def updated_at; end
 
