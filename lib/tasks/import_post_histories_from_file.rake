@@ -6,7 +6,7 @@ namespace :data do
       file.each do |line|
         post_history = JSON.parse(line)
         author = Author.find(post_history.keys.first)
-        author.update!(post_history: post_history[author.name])
+        author.update!(subreddit_history: post_history[author.name])
       end
     end
   end
