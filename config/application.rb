@@ -22,7 +22,7 @@ Bundler.require(*Rails.groups)
 
 STUDY_MONTHS = T.let(
   (("05".."12").map {|month| "2018-#{month}"} +
-   ("01".."11").map {|month| "2019-#{month}"}).freeze,
+   ("01".."10").map {|month| "2019-#{month}"}).freeze,
   T::Array[String]
 )
 
